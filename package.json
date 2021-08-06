@@ -1,0 +1,25 @@
+{
+  "name": "itisdev-group-b",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiguelG619/ITISDEV-GROUP-B.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiguelG619/ITISDEV-GROUP-B/issues"
+  },
+  "homepage": "https://github.com/MiguelG619/ITISDEV-GROUP-B#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.13.5"
+  }
+}
