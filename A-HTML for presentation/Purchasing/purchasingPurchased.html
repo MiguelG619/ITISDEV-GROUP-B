@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+  <title>Orders</title>
+</head>
+<body>
+  
+  <!-- navbar -->
+  <!-- sidebar -->
+
+  <!-- Left column Orders -->
+  <div class="bg-dark p-3"></div>
+  <div class="bg-light row mx-0 py-3 bg-light">
+    <div class="col-sm-8 p-3">
+      <section>
+        <div class="card pb-3 mb-3">
+          <div class="card-body rounded text-right row" style="height: 9vh;">
+            <span class="col">
+              <h3 class="text-secondary">Purchased Ingredient</h3>
+            </span>
+            <span class="createPurchasedIngredient text-end col fs-6 pt-1">
+              <a href="purchasingCreatePurchasedIngredient.html">
+                <button class=" btn btn-m bg-info">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  Create Purchased Ingredient
+                </button>
+              </a>
+            </span>
+          </div>
+        </div>
+      </section>
+      
+      <section class="menu">
+        <div class="row row-cols-1 row-cols-md-3 g-2">
+          <div class="col">
+            <div class="card rounded" onclick="orderAdd('Spaghetti'); this.onclick=null;">
+              <div class="card-body">
+                <h5 class="card-title text-center" >Spaghetti</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card rounded" onclick="orderAdd('Lumpia'; this.onclick=null;">
+              <div class="card-body" >
+                <h5 class="card-title text-center">Lumpia</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card rounded" onclick="orderAdd('Fried Chicken'); this.onclick=null;">
+              <div class="card-body">
+                <h5 class="card-title text-center">Fried Chicken</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card rounded" onclick="orderAdd('Palabok'); this.onclick=null;"> 
+              <div class="card-body">
+                <h5 class="card-title text-center">Palabok</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+      </section>
+
+
+
+
+    <!-- Right Column Cart -->
+    <div class="col-sm-4">
+      <div class="card overflow-auto" style="height: 79vh;">
+        <div class="card-body rounded">
+          <h5>Purchased</h5>
+          <hr>
+          <ul id="order-list row" class="list-unstyled">
+            <li class="row">
+              <div class="col-5 mb-3">
+                <div class="fs-6">Spaghetti</div>
+              </div>
+              <div class="col-5"><input type="number" class="col-4"></div>
+              <div class="text-danger fs-4 col">
+                <i class="fa-regular fa-trash-xmark"></i>
+              </div>
+              <hr>
+            </li>
+            <li class="row">
+              <div class="col-5 mb-3">
+                <div class="fs-6">Lumpia</div>
+              </div>
+              <div class="col-5">
+                <input type="number" class="col-4">
+              </div>
+              <div class="text-danger fs-4 col">
+                <i class="fa-regular fa-trash-xmark"></i>
+              </div> 
+              <hr>
+            </li>
+            <li class="row">
+              <div class="col-5 mb-3">
+                <div class="fs-6">Fried Chicken</div>
+              </div>
+              <div class="col-5"><input type="number" class="col-4"></div>
+              <div class="text-danger fs-4 col">
+                <i class="fa-regular fa-trash-xmark"></i>
+              </div>
+              <hr>
+            </li>
+            <li class="row">
+              <div class="col-5 mb-3">
+                <div class="fs-6">Palabok</div>
+              </div>
+              <div class="col-5"><input type="number" class="col-4"></div>
+              <div class="text-danger fs-4 col">
+                <i class="fa-regular fa-trash-xmark"></i>
+              </div>
+              <hr>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body rounded">
+          <button class="w-100 btn btn-lg bg-primary text-light">Receive Purchase</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+
+  <script>
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
+</html>   
