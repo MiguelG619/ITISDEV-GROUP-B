@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<!-- Title  -->
+<body>
+<div class="container">
+        <div class="row">
+            <div class="col"><h5>Manual Count</h5></div>   
+        </div>
+</div>
+    <br>
+    <!-- Header of table -->
+<div class="container">
+    <table class="table">
+        <thead>
+              <tr>
+                <th class="text-secondary">Purchased Ingredient</th>
+                <th class="text-secondary">Quantity of Stock</th>
+                <th class="text-secondary">Unit of Measurement</th>
+                <th class="text-secondary">Manual Count</th>
+                <th class="text-secondary">Losses</th>
+                <th class="text-secondary">Reason</th>
+            
+              </tr>
+        </thead>
+        <!-- Contents of table -->
+        <tbody>
+            <form action="discrepancyReason.html">
+              <tr>
+                <td>COKE SAKTO</td>
+                <td>5</td>
+                <td>L</td>
+                <td><input type="number" min="0" class="manualcount-input" id="manualcount-input1"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>MACHA LATTE</td>
+                <td>XXXXXX</td>
+                <td>XXXXXX</td>
+                <td><input type="number" min="0" class="manualcount-input" id="manualcount-input2"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CARAMEL FRAPPE</td>
+                <td>XXXXXXX</td>
+                <td>XXXXXXX</td>
+                <td><input type="number" min="0" class="manualcount-input" id="manualcount-input3"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>LUMPIA</td>
+                <td>XXXXXXX</td>
+                <td>XXXXXXX</td>
+                <td><input type="number" min="0" class="manualcount-input" id="manualcount-input4"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>    
+        </tbody>
+    </table>
+            <div class="float-right"><button type="done" class="btn btn-primary">Done</button></div>
+            </form>
+</body>
+
+</html>
