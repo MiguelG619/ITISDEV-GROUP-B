@@ -20,6 +20,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <script type="text/javascript" src="date.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
         <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
 
@@ -35,7 +36,14 @@
                 <div class="col-md-12 mt-3">
                     <div class="card">
                         <div class="card-body overflow-auto rounded" style="height: 70vh">
-                            <input class="float-end" type="text" name="daterange" value="08/01/2021 - 08/08/2021" />
+                            <a href="purchasingPurchased.html">
+                                <button class="d-inline float-end btn btn-m bg-info">
+                                  <i class="fa-solid fa-circle-plus"></i>
+                                  Create Purchase Order
+                                </button>
+                              </a>
+                            <input class=" m-2 d-inline float-end" type="text" name="daterange" value="08/01/2021 - 08/08/2021" />
+                            
                             <h2>Purchase Orders List</h2>
                             <div class="table-responsive">
                                 <table class="table overflow-auto">
