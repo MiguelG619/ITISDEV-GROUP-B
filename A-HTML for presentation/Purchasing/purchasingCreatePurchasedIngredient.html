@@ -9,6 +9,11 @@
 			integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 			crossorigin="anonymous"
 		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+			crossorigin="anonymous"
+		></script>
 		<link
 			rel="stylesheet"
 			href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
@@ -19,16 +24,21 @@
 		<!-- navbar -->
 		<!-- sidebar -->
 		<section>
-			<div class="card position-absolute top-50 start-50 translate-middle" style="width: 100vh;">
+			<div
+				class="card position-absolute top-50 start-50 translate-middle"
+				style="width: 100vh"
+			>
 				<div class="card-body rounded-pill">
-					<form class="m-4 pb-4">
+					<form class="m-4 pb-5">
 						<header class="pb-1">
 							<h1>Create Purchased Ingredient</h1>
 						</header>
 
 						<section>
 							<div class="input-group mb-3">
-								<span class="input-group-text col-4 bg-info" id="basic-addon3"
+								<span
+									class="input-group-text col-4 bg-info"
+									id="basic-addon3"
 									>Name</span
 								>
 								<input
@@ -40,7 +50,9 @@
 							</div>
 
 							<div class="input-group mb-3">
-								<span class="input-group-text col-4 bg-info" id="basic-addon3"
+								<span
+									class="input-group-text col-4 bg-info"
+									id="basic-addon3"
 									>System Ingredient</span
 								>
 								<input
@@ -52,19 +64,36 @@
 							</div>
 
 							<div class="input-group mb-3">
-								<span class="input-group-text col-4 bg-info" id="basic-addon3"
+								<span
+									class="input-group-text col-4 bg-info"
+									id="basic-addon3"
 									>Unit Of Measurement</span
 								>
-								<input
-									type="text"
-									class="form-control"
-									id="purchased-unit-of-measurement"
-									aria-describedby="basic-addon3"
-								/>
+								<select
+									class="form-select"
+									id="inputGroupSelect01"
+								>
+									<option selected>Choose...</option>
+									<option value="ml">ml</option>
+									<option value="l">l</option>
+									<option value="cup">cup</option>
+								</select>
+
+								<!-- Button trigger modal -->
+								<button
+									type="button"
+									class="btn btn-primary"
+									data-bs-toggle="modal"
+									data-bs-target="#uomModal"
+								>
+									<i class="fa-solid fa-circle-plus"></i>
+								</button>
 							</div>
 
 							<div class="input-group mb-3">
-								<span class="input-group-text col-4 bg-info" id="basic-addon3"
+								<span
+									class="input-group-text col-4 bg-info"
+									id="basic-addon3"
 									>Quantity Per Stock</span
 								>
 								<input
@@ -75,10 +104,13 @@
 									aria-describedby="basic-addon3"
 								/>
 							</div>
-							
+
 							<div class="float-end">
 								<a href="purchasingPurchased.html">
-									<button type="submit" class="btn btn-secondary">
+									<button
+										type="submit"
+										class="btn btn-secondary"
+									>
 										Cancel
 									</button>
 								</a>
@@ -86,12 +118,63 @@
 									Save
 								</button>
 							</div>
-
 						</section>
 					</form>
 				</div>
 			</div>
 		</section>
+
+		<!-- Modal -->
+		<div
+			class="modal fade " 
+			id="uomModal"
+			tabindex="-1"
+			aria-labelledby="uomModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="uomModalLabel">
+							Add Unit of Measurement
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<div class="input-group mb-3">
+							<span
+								class="input-group-text col-2 bg-info"
+								id="basic-addon3"
+								>UOM</span
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="purchased-system-ingredient"
+								aria-describedby="basic-addon3"
+							/>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
+						<button type="button" class="btn btn-primary">
+							Save changes
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<script></script>
 
