@@ -6,16 +6,22 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
+// const options = {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true
+// };
+
+const dbURI = 'mongodb://localhost:27017/itisdev-instock'; // ADD ATLAS MONGODB DATABASE
+      //"mongodb+srv://admin:admin@jkl.8e9pu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 const database = {
   connect: function () {
-    const dbURI =
-      "mongodb+srv://admin:admin@jkl.8e9pu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     mongoose
       .connect(dbURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
-      .then((result) => console.log("Connected to db"))
+      .then((result) => console.log("Connected to db" + dbURI))
       .catch((err) => console.log(err));
   },
 
