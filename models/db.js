@@ -21,7 +21,7 @@ const database = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
-      .then((result) => console.log("Connected to db" + dbURI))
+      .then((result) => console.log("Connected to " + dbURI))
       .catch((err) => console.log(err));
   },
 
