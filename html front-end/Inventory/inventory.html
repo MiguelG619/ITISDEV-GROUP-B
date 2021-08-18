@@ -24,8 +24,8 @@
         <div class="container-fluid">
             <a class="navbar-brand"><img src="navbarlogo.png" style="width: 150px; height: 50px; object-fit: contain" alt="LOGO"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <span class="navbar-toggler-icon"></span>
+      </button>
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav collpase navbar-collapse me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -53,10 +53,10 @@
             <div class="card-body rounded row">
                 <h3 class="col text-secondary">Inventory</h3>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary col-2 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i class="fa-solid fa-circle-plus"></i> 
-                    Add Ingredient
-                </button>
+                <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-circle-plus"></i>
+    Add Ingredient
+  </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,7 +67,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                
+                                ...
                                 <section>
                                     <div class="card position-absolute top-10 start-50 translate-middle" style="width: 100vh">
                                         <div style="background-color:#F8F5F1;">
@@ -79,192 +79,195 @@
                                                 <section>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text col-4 bg-info" id="basic-addon3">Ingredient Name</span
-                                                        >
-                                                        <input 
-                                                        type="text"
-                                                        class="form-control"
-                                                        id="purchased-ingredient-name"
-                                                        aria-describedby="basic-addon3"
-                                                        />
-                                                    </div>
-
-
-                                                    <div class="input-group mb-3">
-                                                      <span
-                                                      class="input-group-text col-4 bg-info"
-                                                      id="basic-addon3"
-                                                      >Unit Of Measurement</span
-                                                      >
-                                                      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                                                          <datalist id="datalistOptions">
-                                                            <option value="ml">
-                                                              <option value="l">
-                                                              <option value="cup">
-                                                          </datalist>
-
-                                                              </div>
-
-                                                                      <div class="input-group mb-3">
-                                                                          <span
-                                                                          class="input-group-text col-4 bg-info"
-                                                                          id="basic-addon3"
-                                                                          >Reorder Point</span
-                                                                          >
-                                                                          <input
-                                                                          type="number"
-                                                                          min="0"
-                                                                          class="form-control"
-                                                                          id="purchased-quantity-per-stock"
-                                                                          aria-describedby="basic-addon3"
-                                                                          />
-                                                                      </div>
-
-                                                                      <div class="float-end">
-                                                                          <a href="inventory.html">
-                                                                            <button
-                                                                            type="submit"
-                                                                            class="btn btn-secondary me-3"
-                                                                            >
-                                                                            Cancel
-                                                                        </button>
-                                                                    </a>
-                                                                    <button type="submit" class="d-inline float-end btn btn-m bg-info">
-                                                                        Save
-                                                                    </button>
-                                                                </div>
-                                                            </section>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </section>
-
-                                            <!-- Modal -->
-                                            <div
-                                            class="modal fade " 
-                                            id="uomModal"
-                                            tabindex="-1"
-                                            aria-labelledby="uomModalLabel"
-                                            aria-hidden="true"
-                                            >
-                                            <div class="modal-dialog modal-dialog-centered">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h5 class="modal-title" id="uomModalLabel">
-                                                    Add Unit of Measurement
-                                                </h5>
-                                                <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"
-                                                ></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <div class="input-group mb-3">
-                                                <span
-                                                class="input-group-text col-2 bg-info"
-                                                id="basic-addon3"
-                                                >UOM</span
-                                                >
-                                                <input
-                                                type="text"
-                                                class="form-control"
-                                                id="purchased-system-ingredient"
-                                                aria-describedby="basic-addon3"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button
-                                          type="button"
-                                          class="btn btn-secondary"
-                                          data-bs-dismiss="modal">
-                                          Close
-                                      </button>
-                                      <button type="button" class="btn btn-primary">
-                                        Save changes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                      >
+                      <input 
+                        type="text"
+                        class="form-control"
+                        id="purchased-ingredient-name"
+                        aria-describedby="basic-addon3"
+                      />
                     </div>
-
+      
+      
+                    <div class="input-group mb-3">
+                      <span
+                        class="input-group-text col-4 bg-info"
+                        id="basic-addon3"
+                        >Unit Of Measurement</span
+                      >
+                      <select
+                        class="form-select"
+                        id="inputGroupSelect01"
+                      >
+                        <option selected>Choose...</option>
+                        <option value="ml">ml</option>
+                        <option value="l">l</option>
+                        <option value="cup">cup</option>
+                      </select>
+      
+                    </div>
+      
+                    <div class="input-group mb-3">
+                      <span
+                        class="input-group-text col-4 bg-info"
+                        id="basic-addon3"
+                        >Reorder Point</span
+                      >
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="purchased-quantity-per-stock"
+                        aria-describedby="basic-addon3"
+                      />
+                    </div>
+      
+                    <div class="float-end">
+                      <a href="inventory.html">
+                        <button
+                          type="submit"
+                          class="btn btn-secondary me-3"
+                        >
+                          Cancel
+                        </button>
+                      </a>
+                      <button type="submit" class="d-inline float-end btn btn-m bg-info">
+                        Save
+                      </button>
+                    </div>
+                  </section>
+                </form>
+              </div>
+            </div>
+          </section>
+      
+          <!-- Modal -->
+          <div
+            class="modal fade " 
+            id="uomModal"
+            tabindex="-1"
+            aria-labelledby="uomModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="uomModalLabel">
+                    Add Unit of Measurement
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text col-2 bg-info"
+                      id="basic-addon3"
+                      >UOM</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="purchased-system-ingredient"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
               </div>
+            </div>
           </div>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
+    </div>
   </div>
 
-</div>
-</div>
+        </div>
+    </div>
 
-<div class="row"></div>
+    <div class="row"></div>
 
-<div class="col-md-12 mt-3">
-    <div class="card">
-        <div class="card-body overflow-auto rounded" style="height: 75vh">
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-body overflow-auto rounded" style="height: 75vh">
+                            
+                            <input class=" m-2 d-inline float-end" type="text" name="daterange" value="08/01/2021 - 08/08/2021" />
+                            
+                            <h2>Inventory</h2>
+                            <div class="table-responsive rounded">
+                                <table class="table overflow-auto" >
+                                    <thead>
+                                        <tr class="bg-secondary bg-linear-gradien, text-light" >
+                                            <th class="text-center">Ingredient</th> 
+                                            <th class="text-center">On Hand</th>
+                                            <th class="text-center">Unit of Measurement</th>
+                                            <th class="text-center">Reorder Point</th>
+                                            <th class="text-center">Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">Cream Cheese</td>
+                                            <td class="text-center">200</td>
+                                            <td class="text-center">g</td>
+                                            <td class="text-center">X</td>
+                                            <td style="text-align:center;">
+                                              <button type="button" class="btn btn-warning">Low Stock</button>
+                                            </td>
+                                        </tr>
 
-            <input class=" m-2 d-inline float-end" type="text" name="daterange" value="08/01/2021 - 08/08/2021" />
+                                        <tr>
+                                            <td class="text-center">Coffee Beans</td>
+                                            <td class="text-center">2</td>
+                                            <td class="text-center">kg</td>
+                                            <td class="text-center">X</td>
+                                            <td style="text-align:center;">
+                                              <button type="button" class="btn btn-success">In Stock</button>
+                                            </td>
+                                        </tr>
 
-            <h2>Inventory</h2>
-            <div class="table-responsive rounded">
-                <table class="table overflow-auto" >
-                    <thead>
-                        <tr class="bg-secondary bg-linear-gradien, text-light" >
-                            <th class="text-center">Ingredient</th> 
-                            <th class="text-center">On Hand</th>
-                            <th class="text-center">Unit of Measurement</th>
-                            <th class="text-center">Reorder Point</th>
-                            <th class="text-center">Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center">Cream Cheese</td>
-                            <td class="text-center">200</td>
-                            <td class="text-center">g</td>
-                            <td class="text-center">X</td>
-                            <td style="text-align:center;">
-                              <button type="button" class="btn btn-warning">Low Stock</button>
-                          </td>
-                      </tr>
+                                        <tr>
+                                            <td class="text-center">Creamer</td>
+                                            <td class="text-center">2000</td>
+                                            <td class="text-center">g</td>
+                                            <td class="text-center">X</td>
+                                            <td style="text-align:center;">
+                                              <button type="button" class="btn btn-success">In Stock</button>
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
 
-                      <tr>
-                        <td class="text-center">Coffee Beans</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">kg</td>
-                        <td class="text-center">X</td>
-                        <td style="text-align:center;">
-                          <button type="button" class="btn btn-success">In Stock</button>
-                      </td>
-                  </tr>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                  <tr>
-                    <td class="text-center">Creamer</td>
-                    <td class="text-center">2000</td>
-                    <td class="text-center">g</td>
-                    <td class="text-center">X</td>
-                    <td style="text-align:center;">
-                      <button type="button" class="btn btn-success">In Stock</button>
-                  </td>
-              </tr>
-
-
-          </tbody>
-      </table>
-  </div>
-
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-
-</body>
+       
+    </body>
 </html>
