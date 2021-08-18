@@ -98,12 +98,16 @@
                         id="basic-addon3"
                         >System Ingredient</span
                       >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="purchased-system-ingredient"
-                        aria-describedby="basic-addon3"
-                      />
+                      <select
+                        class="form-select"
+                        id="inputGroupSelect01"
+                      >
+                        <option selected>Choose...</option>
+                        <option value="ml">Cheese</option>
+                        <option value="l">Coke</option>
+                        <option value="cup">Pasta</option>
+                      </select>
+      
                     </div>
       
                     <div class="input-group mb-3">
@@ -143,7 +147,7 @@
                       <a href="purchasingPurchased.html">
                         <button
                           type="submit"
-                          class="btn btn-secondary"
+                          class="btn btn-secondary mx-3"
                         >
                           Cancel
                         </button>
