@@ -11,7 +11,7 @@
 <body>
     <!-- Login Form -->
     <div class="container">
-        <div class="mx-auto" style="width: 200px;"><img src="../images/loginlogo.png" style="width: 200px; height: 100px; object-fit: contain" alt="LOGO"></div>
+        <div class="mx-auto" style="width: 200px;"><a href="/"><img src="../images/loginlogo.png" style="width: 200px; height: 100px; object-fit: contain" alt="LOGO"></a></div>
         <div class="row justify-content-center mt-5">
             <div class="col-lg-4 col-md-8">
                 <div class="card shadow border-secondary border-5">
@@ -19,7 +19,7 @@
                         <h2 class="p-3">Sign Up</h2>
                     </div>
                     <div class="card-body">
-                        <form method="post">
+                        <form method="post" action="/signup">
                             {{!-- <div class="row">
                                 <div class="col">
                                     <label for="firstName" class="form-label">First Name</label>
@@ -32,31 +32,32 @@
 
                             <div class="mb-4">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" required/>
+                                <input type="text" name="firstName" id="firstName" class="form-control" id="firstName" required/>
                             </div>
 
                             <div class="mb-4">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" required/>
+                                <input type="text" name="lastName" id="lastName" class="form-control" id="lastName" required/>
                             </div>
                             
                             <div class="mb-4">
-                                <label for="username" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="username" required/>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" name="email" id="email" class="form-control" id="username" required/>
+                                <p id="emailError" class="error">{{emailError}}</p>
                             </div>
                             <div class="mb-4">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" required/>
+                                <input type="password" name="password" id="password" class="form-control" id="password" required/>
                             </div>
 
                             <div class="mb-4">
                                 <label for="role" class="form-label">Role</label>
-                                <select id="single" class="form-select form-select-chosen" data-placeholder="ROLE TYPE">
+                                <select id="single" name="role" id="role" class="form-select form-select-chosen" data-placeholder="ROLE TYPE" required>
                                     <option value="" disabled selected>Select Role</option>
-                                    <option>Cashier</option>
-                                    <option>Sales Manager</option>
-                                    <option>Inventory</option>
-                                    <option>Purchasing</option>
+                                    <option value="cashier">Cashier</option>
+                                    <option value="sales manager">Sales Manager</option>
+                                    <option value="inventory">Inventory</option>
+                                    <option value="purchasing">Purchasing</option>
                                 </select>
                             </div>
 
