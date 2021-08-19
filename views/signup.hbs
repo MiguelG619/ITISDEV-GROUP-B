@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <!-- Login Form -->
+    <div class="container">
+        <div class="mx-auto" style="width: 200px;"><img src="../images/loginlogo.png" style="width: 200px; height: 100px; object-fit: contain" alt="LOGO"></div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-4 col-md-8">
+                <div class="card shadow border-secondary border-5">
+                    <div class="card-title text-center border-bottom ">
+                        <h2 class="p-3">Sign Up</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {{!-- <div class="row">
+                                <div class="col">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required/>
+
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required/>
+                                </div>
+                            </div> --}}
+
+                            <div class="mb-4">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required/>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required/>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="username" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="username" required/>
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required/>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="role" class="form-label">Role</label>
+                                <select id="single" class="form-select form-select-chosen" data-placeholder="ROLE TYPE">
+                                    <option value="" disabled selected>Select Role</option>
+                                    <option>Cashier</option>
+                                    <option>Sales Manager</option>
+                                    <option>Inventory</option>
+                                    <option>Purchasing</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="signup" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                            <div class="d-grid">
+                                <a href="/login" class="link-primary text-decoration-none text-center">Already have an account? Login</a>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
