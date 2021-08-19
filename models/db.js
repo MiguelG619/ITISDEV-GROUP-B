@@ -25,6 +25,8 @@ const database = {
       .catch(err => console.log(err));
   },
 
+
+  
   /*
     inserts a single `doc` to the database based on the model `model`
   */

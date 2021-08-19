@@ -1,5 +1,7 @@
 const db = require('./models/db.js');
-const url = 'mongodb://localhost:27017/itisdev-instock';
+
+// const url = 'mongodb://localhost:27017/itisdev-instock';
+const url = 'mongodb+srv://draco:nAG5fKmyDbDqsUS5@itisdev-in-stock.mjmm5.mongodb.net/inventory?retryWrites=true&w=majority';
 
 const User = require('./models/UserModel.js');
 
