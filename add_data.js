@@ -32,6 +32,7 @@ async function listUsers() {
     const users = await User
         .find()
         .select('firstName email role');
+    console.log("Listing all users...");
     console.log(users);
 }
 
