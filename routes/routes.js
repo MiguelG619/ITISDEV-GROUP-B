@@ -9,5 +9,7 @@ router.get('/', controller.getIndex);
 router.get('/login', loginController.getLogIn);
 router.get('/signup', signupController.getSignUp);
 router.post('/signup', signupController.postSignUp);
+router.get('/getCheckEmail', signupController.getCheckEmail);
+
 
 module.exports = router;
