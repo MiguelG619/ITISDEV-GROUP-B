@@ -16,11 +16,11 @@
     <title>Orders</title>
   </head>
   <body>
+
     {{> navbarCashier}}
 
-
-    <!-- sidebar -->
     <div class="row p-3 bg-light vw-100">
+
       <!-- Left Column Orders -->
       <div class="col-sm-8">
         <div class="card pb-3 mb-3 border-3 " style="border-bottom-color: #0d6efd">
@@ -29,20 +29,21 @@
           </div>
         </div>
 
+{{#each orders}}
         <div class="row row-cols-md-3 g-2">
           <div class="col">
             <div
               class="card rounded"
-              onclick="orderAdd('Spaghetti', 100); this.onclick=null;"
+              onclick="orderAdd('{{orders}}'); this.onclick=null;"
             >
               <div class="card-body">
-                <h5 class="card-title text-center">Spaghetti</h5>
-                <p class="card-text fw-bold text-center">₱100</p>
+                <h5 class="card-title text-center">{{orders}}</h5>
+                <p class="card-text fw-bold text-center">{{price}}</p>
               </div>
             </div>
           </div>
-          
         </div>
+            {{/each}}
       </div>
 
       <!-- Right Column Cart -->
@@ -50,12 +51,14 @@
         <div class="card overflow-auto" style="height: 60vh">
           <div class="card-body rounded">
             <h3>Cart</h3>
-            <hr />
+            <hr/>
+
+{{#each cart}}
             <ul id="order-list row" class="list-unstyled">
               <li class="row">
                 <div class="col-5">
-                  <div class="fs-6">Spaghetti</div>
-                  <div class="fs-5 text-primary">₱100</div>
+                  <div class="fs-6">{{cart}}</div>
+                  <div class="fs-5 text-primary">{{price}}</div>
                 </div>
                 <div class="col-5">
                   <input type="number" min="0" class="col-4" />
@@ -65,28 +68,34 @@
                 </div>
                 <hr />
               </li>
-        
-        
             </ul>
           </div>
+            {{/each}}
         </div>
+
+
+        {{#each totalPrice}}
         <div class="card">
           <div class="card-body rounded" style="height: 9vh">
             <div class="total-amount fs-5 row">
               <span class="col fw-bold">Total Amount:</span>
-              <span class="col text-end fw-bolder">₱XXX.XX</span>
-            </div>
-          </div>
+              <span class="col text-end fw-bolder">{{totalPrice}}</span>
+            </div>  
+          </div> 
+          {{/each}}
         </div>
+
+        {{#each payment}}
         <div class="card">
           <div class="card-body rounded" style="height: 9vh">
             <div class="payment fs-5 row">
-              <span class="col fw-bold">Payment:</span>
+              <span class="col fw-bold">Payment:  {{payment}}</span>
               <span class="col"
                 ><input type="number" min="0" class="form-control-sm mb-4"
               /></span>
             </div>
           </div>
+          {{/each}}
         </div>
 
         <div class="card">
