@@ -2,10 +2,11 @@
 var mongoose = require('mongoose');
  
 var ingredientsSchema = new mongoose.Schema({
-    ingredient: {
-        type: Schema.Types.ObjectId,
-        ref: 'Ingredients'
-    }, 
+   
+    /*
+    Ito na yung primary key na inaautogenerate ng mongoose so hindi na kailangan ideclare
+    _id: Schema.Types.ObjectId, 
+    */
     ingredientName: {
         type: String,
         required: true
@@ -21,7 +22,10 @@ var ingredientsSchema = new mongoose.Schema({
     reorderPoint: {
         type: String,
         required: true
-    }
+    },
+    // ito magseset kung low on stock para mahanap ng controlelr sa to purchase at maload doon
+    isLowStock: Boolean
+    
 });
 
 module.exports = mongoose.model('Ingredients', ingredientsSchema);
