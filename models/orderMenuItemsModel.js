@@ -10,5 +10,6 @@ var orderMenuItemsSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-});
+}, {timestamps: true});
+
     module.exports = mongoose.model('orderMenuItems', orderMenuItemsSchema);

@@ -26,6 +26,6 @@ var ingredientsSchema = new mongoose.Schema({
     // ito magseset kung low on stock para mahanap ng controlelr sa to purchase at maload doon
     isLowStock: Boolean
     
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('Ingredients', ingredientsSchema);

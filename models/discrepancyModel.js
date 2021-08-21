@@ -26,6 +26,6 @@ var discrepancySchema = new mongoose.Schema({
         type: Date,
         required: true
     }
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('Discrepancy', discrepancySchema);

@@ -14,7 +14,6 @@ var purchasedOrderSchema = new mongoose.Schema({
         default: Date.now
     }
 
-}, { timestamps: true }
-);
+}, { timestamps: true });
 
 module.exports = mongoose.model('PurchasedOrder', purchasedOrderSchema);

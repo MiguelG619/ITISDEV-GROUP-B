@@ -13,6 +13,5 @@ var menuItemIngredientsSchema = new mongoose.Schema({
         type: Double,
         required: true
     }
-});
-
+}, {timestamps: true});
 module.exports = mongoose.model('menuItemModel', menuItemSchema);
