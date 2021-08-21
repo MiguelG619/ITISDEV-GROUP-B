@@ -70,7 +70,7 @@
                                                       id="inputGroupSelect01"
                                                       >
                                                       <option selected>Choose...</option>
-                                                        {{each unitOfMeasurement}}
+                                                        {{#each unitOfMeasurement}}
                                                         <option value="{{{uom}}}">{{uom}}</option>
                                                         {{/each}}
                                                   </select>
@@ -196,7 +196,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{each ingredients}}
+                        {{#each ingredients}}
             
                         <tr>
                             <td class="text-center">{{name}}</td>

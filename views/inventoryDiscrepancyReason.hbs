@@ -55,8 +55,8 @@
         
         <!-- Contents of table -->
         <tbody>
-            {{each discrepancyReport}}
-                {{each this.ingredients}}
+            {{#each discrepancyReport}}
+                {{#each this.ingredients}}
               <tr>
                 <td class="text-center">{{name}}</td>
                 <td class="text-center">{{quantity}}</td>
@@ -65,7 +65,7 @@
                 <td class="text-center">{{loss_quantity}}</td>
                 <td>
                     <select id="single" class="form-control form-control-chosen" data-placeholder="SELECT REASON">
-                        {{each reason}}
+                        {{#each reason}}
                         <option value="" disabled selected>SELECT REASON</option>
                         <option value="{{{name}}}">{{name}}</option>
                         {{!-- <option>SPOILAGE</option>
