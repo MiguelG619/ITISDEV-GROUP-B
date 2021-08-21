@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const db = require('./models/db.js');
 
 // const url = 'mongodb://localhost:27017/itisdev-instock';
@@ -16,11 +19,13 @@ db.connect(url);
 async function createUser(firstName, lastName, email, password, role) {
     console.log('Adding user ' + email + ' to ' + url + '...');
 
+    const hash = await bcrypt.hash(password, saltRounds);
+
     const user = new User({
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: password,
+        password: hash,
         role: role
     })
 

@@ -1,3 +1,8 @@
+const { validationResult } = require('express-validator');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
 
@@ -8,26 +13,42 @@ const signupController = {
     },
 
     postSignUp: function (req, res) {
-        firstName = req.body.firstName;
-        lastName = req.body.lastName;
-        email = req.body.email;
-        password = req.body.password;
-        role = req.body.role;
 
-        var user = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-            role: role
+        var errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+
+            errors = errors.errors;
+
+            var details = {};
+            for(i = 0; i < errors.length; i++)
+                details[errors[i].param + 'Error'] = errors[i].msg;
+
+            res.render('signup', details);
         }
-
-        db.insertOne(User, user, function(flag) {
-            if(flag) {
-                res.send('firstName: ' + firstName +'lastName: ' + lastName + 'email: ' + email);
-            }
-        });
+        else {
+            var firstName = req.body.firstName;
+            var lastName = req.body.lastName;
+            var email = req.body.email;
+            var password = req.body.password;
+            var role = req.body.role;
+    
+            bcrypt.hash(password, saltRounds, function(err, hash) {
+                var user = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: hash,
+                    role: role
+                }
         
+                db.insertOne(User, user, function(flag) {
+                    if(flag) {
+                        res.send('firstName: ' + firstName +'lastName: ' + lastName + 'email: ' + email);
+                    }
+                });
+            });
+        }
     },
 
     getCheckEmail: function (req, res) {
