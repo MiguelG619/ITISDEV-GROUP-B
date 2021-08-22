@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var discrepancySchema = new Schema({
     ingredient: {
         type: Schema.Types.ObjectId,
-        ref: 'Ingredients'
+        ref: 'Ingredient',
+        required: true
     }, 
     reason: {
         type: String,
@@ -12,10 +13,6 @@ var discrepancySchema = new Schema({
     },
     lossQuantity: {
         type: Number,
-        required: true
-    },
-    uom: {
-        type: String,
         required: true
     },
     date: {

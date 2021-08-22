@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
  
-var ingredientsSchema = new mongoose.Schema({
+var ingredientSchema = new mongoose.Schema({
    
     /*
     Ito na yung primary key na inaautogenerate ng mongoose so hindi na kailangan ideclare
@@ -12,10 +12,12 @@ var ingredientsSchema = new mongoose.Schema({
     },
     quantityPerStock: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     uom: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Unit',
         required: true
     },
     reorderPoint: {
@@ -27,4 +29,4 @@ var ingredientsSchema = new mongoose.Schema({
     
 }, {timestamps: true});
 
-module.exports = mongoose.model('Ingredients', ingredientsSchema);
+module.exports = mongoose.model('Ingredient', ingredientSchema);

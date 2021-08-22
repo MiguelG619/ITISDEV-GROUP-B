@@ -11,20 +11,20 @@ var purchasedOrderIngredientsSchema = new Schema({
     //ito yung foreign key na isa
     purchasedOrder: {
         type: Schema.Types.ObjectId,
-        ref: 'PurchasedOrder'
+        ref: 'PurchasedOrder',
+        required: true
     },
     // yung isang foreign key
     purchasedIngredients: {
         type: Schema.Types.ObjectId,
-        ref: 'PurchasedIngredients'
+        ref: 'PurchasedIngredient',
+        required: true
     },
-    /*
     quantityPurchased: {
         type: Number,
         required: true
     }
-    */
     
 }, { timestamps: true });
 
-module.exports = mongoose.model('purchasedOrderIngredients', purchasedOrderIngredientsSchema);
+module.exports = mongoose.model('PurchasedOrderIngredients', purchasedOrderIngredientsSchema);

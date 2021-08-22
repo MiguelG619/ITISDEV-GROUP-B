@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var menuItemIngredientsSchema = new mongoose.Schema({
+var menuItemSchema = new mongoose.Schema({
      /*
     Ito na yung primary key na inaautogenerate ng mongoose so hindi na kailangan ideclare
     _id: Schema.Types.ObjectId, 
@@ -11,7 +11,8 @@ var menuItemIngredientsSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        //required: true
+        default: 'active',
+        enum: ['active', 'inactive']
     },
     price: {
         type: Number,

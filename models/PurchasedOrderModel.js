@@ -8,7 +8,8 @@ var purchasedOrderSchema = new Schema({
     // Foreign Key
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     date: {
         type: Date,

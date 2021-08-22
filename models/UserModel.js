@@ -21,7 +21,8 @@ var userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        required: true
+        required: true,
+        enum: ['cashier', 'sales manager', 'inventory', 'purchasing']
     }
 }, {timestamps: true});
 

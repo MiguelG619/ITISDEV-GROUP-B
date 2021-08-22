@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
  
-var ordersSchema = new Schema({
-    employee: {
+var orderSchema = new Schema({
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'OrderMenuItems'
+        ref: 'User',
+        required: true
     },
    totalAmount: {
         type: Number,
@@ -16,4 +17,4 @@ var ordersSchema = new Schema({
    }
 }, {timestamps: true});
 
-module.exports = mongoose.model('Orders', ordersSchema);
+module.exports = mongoose.model('Order', orderSchema);

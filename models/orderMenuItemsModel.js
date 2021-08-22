@@ -2,9 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var orderMenuItemsSchema = new Schema({
+    order: {
+        type: Schema.Types.ObjectId,
+        ref: 'Order',
+        required: true
+    },
     menuItem: {
         type: Schema.Types.ObjectId,
-        ref: 'MenuItem'
+        ref: 'MenuItem',
+        required: true
     },
     quantity: {
         type: Number,

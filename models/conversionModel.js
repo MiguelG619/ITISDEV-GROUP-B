@@ -1,15 +1,16 @@
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
  
 var conversionSchema = new mongoose.Schema({
-    // Primary key PK purchase_ingredient_id in lucidcharts table
-    // _id: Schema.Types.ObjectId, 
     fromUnitOfMeasurement: {
-        type: String,
+        type: Schema.Types.ObjectId, 
+        ref: 'Unit',
         required: true
     },
     toUnitOfMeasurement: {
-        type: String,
+        type: Schema.Types.ObjectId, 
+        ref: 'Unit',
         required: true
     },
     fromRatio: {
@@ -22,4 +23,4 @@ var conversionSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-module.exports = mongoose.model('PurchasedIngredientsSchema', conversionSchema);
+module.exports = mongoose.model('Conversion', conversionSchema);

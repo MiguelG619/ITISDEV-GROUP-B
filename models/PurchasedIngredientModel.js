@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var purchasedIngredientsSchema = new Schema({
+var purchasedIngredientSchema = new Schema({
     // Primary key PK purchase_ingredient_id in lucidcharts table
     // _id: Schema.Types.ObjectId, 
 
     // Foreign Key
     ingredient: {
         type: Schema.Types.ObjectId,
-        ref: 'Ingredients'
+        ref: 'Ingredient'
     },
     quantityPerStock: {
         type: Number,
@@ -19,13 +19,10 @@ var purchasedIngredientsSchema = new Schema({
         required: true
     },
     uom: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Unit',
         required: true
     },
-    quantityPurchased: {
-        type: Number,
-        required: true
-    }
 }, {timestamps: true});
 
-module.exports = mongoose.model('PurchasedIngredients', purchasedIngredientsSchema);
+module.exports = mongoose.model('PurchasedIngredient', purchasedIngredientsSchema);

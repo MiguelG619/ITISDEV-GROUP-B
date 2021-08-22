@@ -4,18 +4,21 @@ var Schema = mongoose.Schema;
 var menuItemIngredientsSchema = new Schema({
     ingredient: {
         type: Schema.Types.ObjectId,
-        ref: 'Ingredients'
+        ref: 'Ingredient',
+        required: true
     },
     menutItem: {
         type: Schema.Types.ObjectId,
-        ref: 'MenuItem'
+        ref: 'MenuItem',
+        required: true
     },
     quantity: {
         type: Number,
         required: true
     },
     uom: {
-        type: String,
+        type: Schema.Types.ObjectId, 
+        ref: 'Unit',
         required: true
     }
 }, {timestamps: true});
