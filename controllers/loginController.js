@@ -24,8 +24,13 @@ const loginController = {
                 }
 
                 bcrypt.compare(password, result.password, function(err, equal){
-                    if(equal)
-                        res.render('index');
+                    if(equal) {
+                        req.session.email = user.email;
+                        req.session.firstName = user.firstName;
+                        req.session.lastName = user.lastName;
+                        req.session.role = user.role;
+                        res.redirect('/home/' + req.session.email); 
+                    }
                     else {
                         var details = {error: 'Incorrect Email or Password.'};
                         res.render('login', details);

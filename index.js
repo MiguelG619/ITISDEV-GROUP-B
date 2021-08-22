@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const hbs = require('hbs');
 const routes = require('./routes/routes');
+const session = require('express-session');
 const db = require('./models/db.js');
+const mongoStore = require('connect-mongo');
 
 const app = express();
 
@@ -20,6 +22,14 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+// implement 'express-session'
+app.use(session({
+    'secret': 'InStock-session',
+    'resave': false,
+    'saveUninitialized': false,
+    store: mongoStore.create({mongoUrl: 'mongodb+srv://draco:nAG5fKmyDbDqsUS5@itisdev-in-stock.mjmm5.mongodb.net/inventory?retryWrites=true&w=majority'})
+}));
 
 // define the paths contained to './routes/routes.js
 app.use('/', routes);
