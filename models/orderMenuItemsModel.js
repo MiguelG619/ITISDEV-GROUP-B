@@ -7,7 +7,7 @@ var orderMenuItemsSchema = new Schema({
         ref: 'MenuItem'
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
     }
 }, {timestamps: true});

@@ -7,7 +7,7 @@ var ordersSchema = new Schema({
         ref: 'OrderMenuItems'
     },
    totalAmount: {
-        type: String,
+        type: Number,
         required: true
    },
    date: {

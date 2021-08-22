@@ -11,7 +11,7 @@ var purchasedIngredientsSchema = new Schema({
         ref: 'Ingredients'
     },
     quantityPerStock: {
-        type: String,
+        type: Number,
         required: true
     },
     purchasedIngredientName: {

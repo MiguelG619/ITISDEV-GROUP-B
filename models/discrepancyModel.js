@@ -11,7 +11,7 @@ var discrepancySchema = new Schema({
         required: true
     },
     lossQuantity: {
-        type: String,
+        type: Number,
         required: true
     },
     uom: {

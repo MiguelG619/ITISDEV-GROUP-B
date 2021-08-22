@@ -11,7 +11,7 @@ var ingredientsSchema = new mongoose.Schema({
         required: true
     },
     quantityPerStock: {
-        type: String,
+        type: Number,
         required: true
     },
     uom: {
@@ -19,7 +19,7 @@ var ingredientsSchema = new mongoose.Schema({
         required: true
     },
     reorderPoint: {
-        type: String,
+        type: Number,
         required: true
     },
     // ito magseset kung low on stock para mahanap ng controlelr sa to purchase at maload doon
