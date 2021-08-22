@@ -85,4 +85,4 @@ const purchasingController = {
 
 };
 
-module.exports = searchArtistsController;
+module.exports = purchasingController;

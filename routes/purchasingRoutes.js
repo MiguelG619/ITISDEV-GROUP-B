@@ -7,4 +7,3 @@ router.get("/purchased", purchasingController.getPurchasedIngredientsToList);
 router.get("/toPurchase", purchasingController.getToPurchaseIngredients);
 router.get("/purchasedOrders", purchasingController.getAllPurchasedOrders);
 router.get("/purchasedOrderDetails/id", purchasingController.getPurchasedOrderDetails);
-
