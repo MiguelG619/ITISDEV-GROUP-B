@@ -41,8 +41,13 @@ async function listUsers() {
     console.log(users);
 }
 
-createUser('Manjiro', 'Sano', 'm.sano@gmail.com', 'password123', "sales manager");
+createUser('Manjiro', 'Sano', 'm.sano@gmail.com', 'password123', 'sales manager');
 createUser('Ken', 'Ryuguji', 'k.ryuguji@gmail.com', 'password234', 'cashier');
 createUser('Takemichi', 'Hanagaki', 't.hanagaki@gmail.com', 'password345', 'purchasing');
+
+createUser('inventory', 'inventory', 'inventory@gmail.com', 'inventory', 'inventory');
+createUser('purchasing', 'purchasing', 'purchasing@gmail.com', 'purchasing', 'purchasing');
+createUser('salesmanager', 'salesmanager', 'salesmanager@gmail.com', 'salesmanager', 'sales manager');
+createUser('cashier', 'cashier', 'cashier@gmail.com', 'cashier123', 'cashier');
 
 listUsers();
