@@ -11,6 +11,7 @@ const purchasingController = {
   getAllPurchasedIngredients:  (req, res) => {
     PurchasedIngredients.find()
     .populate('ingredient', 'ingredientName')
+    .populate('uom', 'abbrev')
     .sort({ createdAt: -1 })
     .exec()
     .then(result => {
@@ -25,17 +26,45 @@ const purchasingController = {
 
   // for purchased
   getPurchasedIngredientsToList:  (req, res) => {
-    PurchasedIngredients.find()
-    .sort({ createdAt: -1 })
+
+    Ingredients.find()
     .exec()
     .then(result => {
-      res.render('purchased', { purchasedIngredients: result });
+      const systemIngredients = result;
+
+      Unit.find()
+      .exec()
+      .then(result => {
+
+        const unit = result;
+
+        PurchasedIngredients.find()
+        .sort({ createdAt: -1 })
+        .exec()
+        .then(result => {
+          res.render('purchased', { 
+            purchasedIngredients: result, 
+            ingredients: systemIngredients,
+            unitOfMeasurement: unit 
+          });
+        })
+        .catch((err) => {
+          res.status(404).json({
+            message: "Error",
+          });
+        });
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
     })
-    .catch((err) => {
-      res.status(404).json({
-        message: "Error",
-      });
-    });
+    .catch(err => {
+      console.log(err);
+    })
+
+    
   },
 
   getToPurchasedIngredients: (req, res) => {
@@ -71,11 +100,18 @@ const purchasingController = {
   getPurchasedOrderDetails: (req, res) => {
     const id = req.params.id;
     // console.log(id);
-    PurchasedOrderIngredients.find({purchaseOrder: id})
-    .populate('purchasedIngredients')
+    PurchasedOrderIngredients.findById(id)
+    .populate({
+      path: 'purchasedIngredients',
+      populate: {
+        path: 'uom',
+        model: 'Unit'
+      }
+    })
     .exec()
     .then(result => {
-      res.render('purchasedOrderDetails', {purchasedIngredients: result.purchasedIngredients});
+      res.send(result);
+      //res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
     })
     .catch(err => {
       res.status(404).json({

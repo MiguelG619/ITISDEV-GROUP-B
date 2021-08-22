@@ -23,6 +23,10 @@ var purchasedIngredientSchema = new Schema({
         ref: 'Unit',
         required: true
     },
+    quantityPuchased: {
+        type: Number,
+        required: true
+    }
 }, {timestamps: true});
 
 module.exports = mongoose.model('PurchasedIngredient', purchasedIngredientSchema);

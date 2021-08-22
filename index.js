@@ -34,6 +34,51 @@ app.use(session({
 // define the paths contained to './routes/routes.js
 app.use('/', routes);
 
+const Ingredients = require("./models/IngredientModel.js");
+const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
+const Unit = require("./models/UnitModel.js");
+const User = require("./models/UserModel.js");
+const PurchasedOrder = require("./models/PurchasedOrderModel.js");
+const PurchasedOrderIngredients = require("./models/PurchasedOrderIngredientsModel.js");
+
+app.get('/addIngredients', (req, res) => {
+
+    PurchasedOrder.findOne({date: '08/22/2021'})
+    .exec()
+    .then(result => {
+        const po = result;
+
+        PurchasedIngredients.findOne({purchasedIngredientName: 'Coke Litro'})
+        .exec()
+        .then(result => {
+            const pi = result;
+
+        const purchasedOrderIngredients = new PurchasedOrderIngredients({
+            purchasedOrder: po._id,
+            purchasedIngredients: pi._id,
+            quantityPurchased: 5
+        });
+
+                purchasedOrderIngredients.save()
+                .then(result => {
+                    res.send(result);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+    })
+        .catch(err => {
+            console.log(err);
+        });
+
+    
+ 
+});
 
 // connects to the database
 db.connect();
