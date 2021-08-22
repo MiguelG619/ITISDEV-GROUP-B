@@ -11,6 +11,10 @@ var orderSchema = new Schema({
         type: Number,
         required: true
    },
+ number: {
+        type: Number,
+        required: true
+   },
    date: {
         type: Date,
         default: Date.now
