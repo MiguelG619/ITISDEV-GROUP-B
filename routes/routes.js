@@ -5,7 +5,6 @@ const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
 const purchasingController = require("../controllers/purchasingController");
-const homeController = require('../controllers/homeController.js');
 
 
 
@@ -23,9 +22,8 @@ router.get('/getCheckEmail', signupController.getCheckEmail);
 router.get("purchasing/purchasedIngredients", purchasingController.getAllPurchasedIngredients);
 router.get("purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
 router.get("purchasing/toPurchase", purchasingController.getToPurchaseIngredients);
-router.get("purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
+router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
 router.get("purchasing/purchasedOrderDetails/id", purchasingController.getPurchasedOrderDetails);
 
-router.get('/home', homeController.getHome);
 
 module.exports = router;

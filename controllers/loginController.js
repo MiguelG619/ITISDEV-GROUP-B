@@ -23,13 +23,29 @@ const loginController = {
                     role: result.role
                 }
 
+                console.log(user);
+
                 bcrypt.compare(password, result.password, function(err, equal){
                     if(equal) {
                         req.session.email = user.email;
                         req.session.firstName = user.firstName;
                         req.session.lastName = user.lastName;
                         req.session.role = user.role;
-                        res.redirect('/home/' + req.session.email); 
+
+                        console.log(user.email);
+
+                        if(user.role == 'purchasing')
+                            res.send('Purchasing Page Not Currently not working');
+                            // res.redirect('/purchasing/purchasedOrders');
+                            // res.render('purchasedOrdersHome', details);
+                        else if(user.role == 'cashier')
+                            res.render('cashierOrders');    // Not final, to be replaced
+                        else if(user.role == 'sales manager')
+                            res.render('managerMenu');      // Not final, to be replaced
+                        else if(user.role == 'inventory')
+                            res.render('inventory');        // Not final, to be replaced
+                        else
+                            res.send('Error page');
                     }
                     else {
                         var details = {error: 'Incorrect Email or Password.'};
