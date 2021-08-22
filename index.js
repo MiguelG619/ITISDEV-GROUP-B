@@ -34,6 +34,7 @@ app.use(session({
 // define the paths contained to './routes/routes.js
 app.use('/', routes);
 
+
 // connects to the database
 db.connect();
 

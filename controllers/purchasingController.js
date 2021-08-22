@@ -2,6 +2,7 @@ const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
 const Ingredients = require("../models/IngredientModel.js");
 const PurchasedOrder = require("../models/PurchasedOrderModel.js");
 const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredientsModel.js");
+// MUST IMPORT REFERENCE MODEL WHEN IT IS GOING TO BE USED
 const Unit = require("../models/UnitModel.js");
 
 const purchasingController = {
@@ -39,13 +40,17 @@ const purchasingController = {
 
   getToPurchasedIngredients: (req, res) => {
     Ingredients.find({isLowStock: true})
-    .populate('uom')
+    .populate('uom', 'abbrev')
     .sort({ createdAt: -1})
-    .exec((err, result) => {
-    if (err) console.log(err);
+    .exec()
+    .then(result => {
       res.render('purchasingToPurchase', {ingredients: result});
+    })
+    .catch(err => {
+      res.status(404).json({
+        message: "Error",
+      });
     });
-
   }, 
 
   getAllPurchasedOrders:  (req, res) => {
