@@ -2,7 +2,11 @@
 var mongoose = require('mongoose');
 
 var unitSchema = new mongoose.Schema({
-    name: {
+    abbrev: {
+        type: String,
+        required: true
+    },
+    fullName: {
         type: String,
         required: true
     },

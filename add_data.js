@@ -11,13 +11,12 @@ const User = require('./models/UserModel.js');
 db.connect(url);
 
 /* TO DO LIST
-    - bcrypt for hashing
     - user authentication
     - user session
 */
 
 async function createUser(firstName, lastName, email, password, role) {
-    console.log('Adding user ' + email + ' to ' + url + '...');
+    console.log('Adding user ' + email + '...');
 
     const hash = await bcrypt.hash(password, saltRounds);
 
