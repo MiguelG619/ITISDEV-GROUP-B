@@ -1,6 +1,7 @@
-
 var mongoose = require('mongoose');
-var purchasedOrderSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+
+var purchasedOrderSchema = new Schema({
     // Primary key PK purchase_ingredient_id in lucidcharts table
     // _id: Schema.Types.ObjectId, 
 

@@ -1,20 +1,16 @@
-
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
  
-var discrepancySchema = new mongoose.Schema({
-    discrepancy: {
-        type: Schema.Types.ObjectId,
-        ref: 'Discrepancy'
-    }, 
+var discrepancySchema = new Schema({
     ingredient: {
         type: Schema.Types.ObjectId,
         ref: 'Ingredients'
     }, 
-    ingredientName: {
+    reason: {
         type: String,
         required: true
     },
-    quantityPerStock: {
+    lossQuantity: {
         type: String,
         required: true
     },
@@ -24,7 +20,7 @@ var discrepancySchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true
+        default: Date.now
     }
 }, {timestamps: true});
 

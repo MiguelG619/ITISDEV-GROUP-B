@@ -6,7 +6,6 @@ const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredients.j
 const purchasingController = {
 
 
-
   getAllPurchasedIngredients:  (req, res) => {
     PurchasedIngredients.find()
     .populate('ingredient', 'ingredientName')
@@ -85,4 +84,4 @@ const purchasingController = {
 
 };
 
-module.exports = searchArtistsController;
+module.exports = purchasingController;

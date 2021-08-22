@@ -1,10 +1,10 @@
-
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var orderMenuItemsSchema = new mongoose.Schema({
-    menuItem:{
-        type: Array,
-        required: true
+var orderMenuItemsSchema = new Schema({
+    menuItem: {
+        type: Schema.Types.ObjectId,
+        ref: 'MenuItem'
     },
     quantity: {
         type: String,
@@ -12,4 +12,4 @@ var orderMenuItemsSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-    module.exports = mongoose.model('orderMenuItems', orderMenuItemsSchema);
+    module.exports = mongoose.model('OrderMenuItems', orderMenuItemsSchema);

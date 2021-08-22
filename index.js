@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const hbs = require('hbs');
 const routes = require('./routes/routes');
-const purchasingRoutes = ('./routes/purchasingRoutes');
 const db = require('./models/db.js');
 
 const app = express();
@@ -24,9 +23,6 @@ app.use(express.static('public'));
 
 // define the paths contained to './routes/routes.js
 app.use('/', routes);
-
-// paths to purchasing routes
-app.use('/purchasing', purchasingRoutes);
 
 // connects to the database
 db.connect();

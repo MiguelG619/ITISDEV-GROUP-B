@@ -1,7 +1,7 @@
-
 var mongoose = require('mongoose');
- 
-var purchasedIngredientsSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+
+var purchasedIngredientsSchema = new Schema({
     // Primary key PK purchase_ingredient_id in lucidcharts table
     // _id: Schema.Types.ObjectId, 
 
@@ -28,4 +28,4 @@ var purchasedIngredientsSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-module.exports = mongoose.model('PurchasedIngredients', userSchema);
+module.exports = mongoose.model('PurchasedIngredients', purchasedIngredientsSchema);

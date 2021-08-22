@@ -1,6 +1,7 @@
-
 var mongoose = require('mongoose');
-var purchasedOrderIngredientsSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+
+var purchasedOrderIngredientsSchema = new Schema({
    
     /*
     Ito na yung primary key na inaautogenerate ng mongoose so hindi na kailangan ideclare
@@ -8,15 +9,15 @@ var purchasedOrderIngredientsSchema = new mongoose.Schema({
     */
 
     //ito yung foreign key na isa
-    purchaseOrder: {
+    purchasedOrder: {
         type: Schema.Types.ObjectId,
         ref: 'PurchasedOrder'
     },
     // yung isang foreign key
-    purchasedIngredients: [{
+    purchasedIngredients: {
         type: Schema.Types.ObjectId,
         ref: 'PurchasedIngredients'
-    }],
+    },
     /*
     quantityPurchased: {
         type: Number,
