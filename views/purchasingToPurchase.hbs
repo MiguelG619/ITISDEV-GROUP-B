@@ -7,15 +7,11 @@
     content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>To Purchase</title>
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
 </head>
 
 <body>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>Purchasing</title>
 
@@ -49,7 +45,7 @@
                                 <tr>
                                     <td class="text-center">{{ingredientName}}</td>
                                     <td class="text-center">{{quantityPerStock}}</td>
-                                    <td class="text-center">{{uom}}</td>
+                                    <td class="text-center">{{uom.name}}</td>
                                     <td class="text-center">{{reorderPoint}}</td>
                                 </tr>
                                 {{/each}}

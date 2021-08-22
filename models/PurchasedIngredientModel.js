@@ -25,4 +25,4 @@ var purchasedIngredientSchema = new Schema({
     },
 }, {timestamps: true});
 
-module.exports = mongoose.model('PurchasedIngredient', purchasedIngredientsSchema);
+module.exports = mongoose.model('PurchasedIngredient', purchasedIngredientSchema);

@@ -1,7 +1,8 @@
-const PurchasedIngredients = require("../models/PurchasedIngredientsModel.js");
-const Ingredients = require("../models/IngredientsModel.js");
-const PurchasedOrder = require("../models/PurchasedOrder.js");
-const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredients.js");
+const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
+const Ingredients = require("../models/IngredientModel.js");
+const PurchasedOrder = require("../models/PurchasedOrderModel.js");
+const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredientsModel.js");
+const Unit = require("../models/UnitModel.js");
 
 const purchasingController = {
 
@@ -36,18 +37,15 @@ const purchasingController = {
     });
   },
 
-  getToPurchaseIngredients: (req, res) => {
+  getToPurchasedIngredients: (req, res) => {
     Ingredients.find({isLowStock: true})
+    .populate('uom')
     .sort({ createdAt: -1})
-    .exec()
-    .then(result => {
+    .exec((err, result) => {
+    if (err) console.log(err);
       res.render('purchasingToPurchase', {ingredients: result});
-    })
-    .catch(err => {
-      res.status(404).json({
-        message: "Error",
-      });
     });
+
   }, 
 
   getAllPurchasedOrders:  (req, res) => {

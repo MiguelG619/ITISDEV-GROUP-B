@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
- 
-var ingredientSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+var ingredientSchema = new Schema({
    
     /*
     Ito na yung primary key na inaautogenerate ng mongoose so hindi na kailangan ideclare
@@ -16,7 +16,7 @@ var ingredientSchema = new mongoose.Schema({
         default: 0
     },
     uom: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: Schema.Types.ObjectId, 
         ref: 'Unit',
         required: true
     },

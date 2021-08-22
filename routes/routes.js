@@ -19,11 +19,11 @@ router.get('/getCheckEmail', signupController.getCheckEmail);
 
 
 // Purchasing routes
-router.get("purchasing/purchasedIngredients", purchasingController.getAllPurchasedIngredients);
-router.get("purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
-router.get("purchasing/toPurchase", purchasingController.getToPurchaseIngredients);
+router.get("/purchasing/purchasedIngredients", purchasingController.getAllPurchasedIngredients);
+router.get("/purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
+router.get("/purchasing/toPurchase", purchasingController.getToPurchasedIngredients);
 router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
-router.get("purchasing/purchasedOrderDetails/id", purchasingController.getPurchasedOrderDetails);
+router.get("/purchasing/purchasedOrderDetails/id", purchasingController.getPurchasedOrderDetails);
 
 
 module.exports = router;
