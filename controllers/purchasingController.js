@@ -84,7 +84,7 @@ const purchasingController = {
 
   getAllPurchasedOrders:  (req, res) => {
     PurchasedOrder.find()
-    .populate('user', 'firstName lastName')
+    .populate('user')
     .sort({ createdAt: -1 })
     .exec()
     .then(result => {
@@ -99,10 +99,9 @@ const purchasingController = {
   
   getPurchasedOrderDetails: (req, res) => {
     const id = req.params.id;
-    // console.log(id);
-    PurchasedOrderIngredients.findById(id)
+    PurchasedOrderIngredients.find({purchasedOrder: id})
     .populate({
-      path: 'purchasedIngredients',
+        path: 'purchasedIngredients',
       populate: {
         path: 'uom',
         model: 'Unit'
@@ -110,8 +109,7 @@ const purchasingController = {
     })
     .exec()
     .then(result => {
-      res.send(result);
-      //res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
+      res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
     })
     .catch(err => {
       res.status(404).json({

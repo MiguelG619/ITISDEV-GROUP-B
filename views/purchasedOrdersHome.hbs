@@ -20,7 +20,7 @@
 
 <title>Purchasing</title>
 
-<!-- {{> navbarPurchasing}} -->
+{{> navbarPurchasing}} 
 
 
 <body>
@@ -59,10 +59,9 @@
                         </thead>
                         <tbody>
                             {{#each purchasedOrder}}
-                                <a href="/purchasing/purchasedOrdersDetails/{{_id}}">
                                     <tr >
                                         <td class="text-center">
-                                            <a href="/purchasing/purchasedOrdersDetails/" class="stretched-link">
+                                            <a href="/purchasing/purchasedOrdersDetails/{{_id}}" class="stretched-link">
                                             1
                                              </a>
                                         </td>

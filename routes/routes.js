@@ -23,7 +23,7 @@ router.get("/purchasing/purchasedIngredients", purchasingController.getAllPurcha
 router.get("/purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
 router.get("/purchasing/toPurchase", purchasingController.getToPurchasedIngredients);
 router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
-router.get("/purchasing/purchasedOrderDetails/", purchasingController.getPurchasedOrderDetails);
+router.get("/purchasing/purchasedOrdersDetails/:id", purchasingController.getPurchasedOrderDetails);
 
 
 module.exports = router;
