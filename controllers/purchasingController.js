@@ -9,12 +9,29 @@ const purchasingController = {
 
 
   getAllPurchasedIngredients:  (req, res) => {
+
+    /* 
+      find in mongoose that is used in sir Arren's db.js 
+       ^ https://www.youtube.com/watch?v=bxsemcrY4gQ&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=9
+       *** USE .exec() to make sure that  mongodb finishes finding first before going to the next step
+      Populate
+      https://stackoverflow.com/questions/38051977/what-does-populate-in-mongoose-mean
+      https://www.youtube.com/watch?v=3p0wmR973Fw
+    */
+
+    //you can populate two times if needed
+    // for the ingredients, you only need to populate the uom as seen in getToPurchasedIngredients below
+
     PurchasedIngredients.find()
     .populate('ingredient', 'ingredientName')
     .populate('uom', 'abbrev')
     .sort({ createdAt: -1 })
     .exec()
     .then(result => {
+       /* purchasedIngredients is just a name, can be anything
+        ^ this is used in the hbs file, usually placed inside the #each
+        result is the Ingredient schema where the uom is loaded and available for use in the hbs
+      */ 
       res.render('purchasedIngredients', { purchasedIngredients: result });
     })
     .catch((err) => {
@@ -98,6 +115,12 @@ const purchasingController = {
   }, 
   
   getPurchasedOrderDetails: (req, res) => {
+    /* https://stackoverflow.com/questions/19222520/populate-nested-array-in-mongoose --- paths
+       populate the ref inside a ref
+       ex. purchasedOrderIngredients has purchasedIngredients ref
+       so first populate the purchasedIngredients
+       then populate the uom so it can be used in the hbs
+     */
     const id = req.params.id;
     PurchasedOrderIngredients.find({purchasedOrder: id})
     .populate({
