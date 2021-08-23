@@ -9,12 +9,29 @@ const purchasingController = {
 
 
   getAllPurchasedIngredients:  (req, res) => {
+
+    /* 
+      find in mongoose that is used in sir Arren's db.js 
+       ^ https://www.youtube.com/watch?v=bxsemcrY4gQ&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=9
+       *** USE .exec() to make sure that  mongodb finishes finding first before going to the next step
+      Populate
+      https://stackoverflow.com/questions/38051977/what-does-populate-in-mongoose-mean
+      https://www.youtube.com/watch?v=3p0wmR973Fw
+    */
+
+    //you can populate two times if needed
+    // for the ingredients, you only need to populate the uom as seen in getToPurchasedIngredients below
+
     PurchasedIngredients.find()
     .populate('ingredient', 'ingredientName')
     .populate('uom', 'abbrev')
     .sort({ createdAt: -1 })
     .exec()
     .then(result => {
+       /* purchasedIngredients is just a name, can be anything
+        ^ this is used in the hbs file, usually placed inside the #each
+        result is the Ingredient schema where the uom is loaded and available for use in the hbs
+      */ 
       res.render('purchasedIngredients', { purchasedIngredients: result });
     })
     .catch((err) => {
