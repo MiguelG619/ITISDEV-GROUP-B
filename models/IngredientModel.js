@@ -10,7 +10,7 @@ var ingredientSchema = new Schema({
         type: String,
         required: true
     },
-    quantityPerStock: {
+    totalQuantity: {
         type: Number,
         required: true,
         default: 0
@@ -24,8 +24,6 @@ var ingredientSchema = new Schema({
         type: Number,
         required: true
     },
-    // ito magseset kung low on stock para mahanap ng controlelr sa to purchase at maload doon
-    isLowStock: Boolean
     
 }, {timestamps: true});
 
