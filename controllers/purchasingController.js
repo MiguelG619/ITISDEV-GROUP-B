@@ -115,6 +115,12 @@ const purchasingController = {
   }, 
   
   getPurchasedOrderDetails: (req, res) => {
+    /* https://stackoverflow.com/questions/19222520/populate-nested-array-in-mongoose --- paths
+       populate the ref inside a ref
+       ex. purchasedOrderIngredients has purchasedIngredients ref
+       so first populate the purchasedIngredients
+       then populate the uom so it can be used in the hbs
+     */
     const id = req.params.id;
     PurchasedOrderIngredients.find({purchasedOrder: id})
     .populate({
