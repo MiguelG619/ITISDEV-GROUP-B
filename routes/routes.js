@@ -4,13 +4,9 @@ const router = express.Router();
 const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
-<<<<<<< Updated upstream
 const purchasingController = require('../controllers/purchasingController.js');
+const managerController = require("../controllers/managerController.JS");
 
-=======
-const purchasingController = require("../controllers/purchasingController");
-const managerController = require("../controllers/managerController");
->>>>>>> Stashed changes
 
 
 const validation = require('../helpers/validation.js');
