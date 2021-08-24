@@ -32,49 +32,6 @@ app.use(session({
 }));
 
 // define the paths contained to './routes/routes.js
-const Ingredients = require("./models/IngredientModel.js");
-const Unit = require("./models/UnitModel.js");
-const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
-const PurchasedOrder = require("./models/PurchasedOrderModel.js");
-const User = require("./models/UserModel.js");
-const PurchasedOrderIngredients = require("./models/PurchasedOrderIngredientsModel.js");
-app.use('/add', (req, res) => {
-    PurchasedOrder.findOne({date: '08/24/2021'})
-    .exec()
-    .then(result => {
-        const po = result;
-        
-
-        PurchasedIngredients.findOne({purchasedIngredientName: 'Coke Litro'})
-        .exec()
-        .then(result => {
-            const pi = result;
-
-            const purchasedOrderIngredients = new PurchasedOrderIngredients({
-                purchasedOrder: po._id,
-                purchasedIngredients: pi._id,
-                quantityPurchased: 3
-            });
-
-            purchasedOrderIngredients.save()
-            .then(result => {
-                res.send(result);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-
-    });
-  
-
-});
-
 app.use('/', routes);
 
 
