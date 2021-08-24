@@ -2,8 +2,13 @@ const MenuItemIngredient = require("../models/menuItemIngredientsModel.js");
 const Ingredients = require("../models/IngredientModel.js");
 const Unit = require("../models/UnitModel.js");
 const MenuItem = require("../models/menuItemModel.js");
-
+const Order = require("../models/OrderModel.js");
+const OrderMenuItem = require("../models/orderMenuItemsModel.js");
 const managerController = {
+
+	getAddMenuItem: (req, res) => {
+		res.render('managerAddMenuItem');
+	},
 
 	getAllMenuItems: (req, res) => {
 		MenuItem.find()
@@ -47,7 +52,40 @@ const managerController = {
 		});
 
 		
-	}
+	},
+
+	getAllOrderHistory: (req, res) => {
+		Order.find()
+		.populate('user')
+		.exec()
+		.then(result => {
+			res.render('managerOrdersHistory', {Orders: result});
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	},
+
+	getOrderDetails: (req, res) => {
+		//Order to get the number to be shown in hbs
+
+
+		OrderMenuItem.find({order: req.params.id})
+		.populate('menuItem')
+		.exec()
+		.then(result => {
+
+			res.render('managerSpecificOrder', { orders: result});
+
+		})
+		.catch(err => {
+			console.log(err);
+		});
+		
+
+
+		
+	},
 
 };
 

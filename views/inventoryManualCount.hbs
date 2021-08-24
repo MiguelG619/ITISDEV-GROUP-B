@@ -13,10 +13,9 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <script type="text/javascript" src="date.js"></script>
+  <!-- <script type="text/javascript" src="date.js"></script> -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
-  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
@@ -46,24 +45,20 @@
                   <th class="text-center text-light">Quantity per Stock</th>
                   <th class="text-center text-light">Unit of Measurement</th>
                   <th class="text-center text-light">Manual Count</th>
-                  <th class="text-center text-light">Losses</th>
-                  <th class="text-center text-light">Reason</th>
                   <th></th>
                 </tr>
               </thead>
               <!-- Contents of table -->
 
               <tbody>
-                {{#each ingredients}}
+                {{#each purchasedIngredients}}
                 <tr>
-                  <td class="text-center">{{name}}</td>
-                  <td class="text-center">{{quantity}}</td>
-                  <td class="text-center">{{uom}}</td>
+                  <td class="text-start">{{purchasedIngredientName}}</td>
+                  <td class="text-center">{{quantityPerStock}}</td>
+                  <td class="text-center">{{uom.abbrev}}</td>
                   <td class="text-center"><input type="number"min="0" class="manualcount-input col-3" id="manualcount-input1"></td>
-                  <td class="text-center"></td>
-                  <td class="text-center"></td>
                 </tr>
-                    {{/each}}
+                  {{/each}}
               </tbody>
             </table>
             <div class="float-end"><button type="done" class="btn btn-primary">Done</button></div>

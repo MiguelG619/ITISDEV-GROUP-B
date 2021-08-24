@@ -13,7 +13,8 @@ var purchasedOrderSchema = new Schema({
     },
     date: {
         type: String,
-        required: true
+        required: true,
+        default: Date.now
     }
 
 }, { timestamps: true });

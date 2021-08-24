@@ -1,6 +1,7 @@
 const Ingredients = require("../models/IngredientModel.js");
 const Unit = require("../models/UnitModel.js");
-
+const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
+const Discrepancy = require("../models/DiscrepancyModel.js");
 
 const managerController = {
 
@@ -52,6 +53,38 @@ const managerController = {
 				console.log(err);
 			});
 
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	},
+
+	getAllPurchasedIngredients: (req, res) => {
+		PurchasedIngredients.find()
+		.populate('uom', 'abbrev')
+		.exec()
+		.then(result => {
+			res.render('inventoryManualCount', {purchasedIngredients: result});
+		})
+		.catch(err => {
+			console.log(err);
+		});
+
+	},
+
+	getdiscrepancyReport: (req, res) => {
+		Discrepancy.find()
+		.populate({
+        path: 'ingredient',
+        populate: {
+          path: 'uom',
+          model: 'Unit'
+        }
+      })
+		.exec()
+		.then(result => {
+			//res.send(result);
+			res.render('inventoryDiscrepancyReport', {discrepancyReport: result});
 		})
 		.catch(err => {
 			console.log(err);

@@ -16,7 +16,7 @@
     <div class="bg-light p-3" style="height: 96vh;">
         <div class="card border-3 " style="border-bottom-color: #0d6efd">
             <div class="card-body rounded">
-                <h3 class="text-secondary">Menu Item Details</h3>
+                <h3 class="text-secondary">Create Menu Item </h3>
                 
             </div>
         </div>
@@ -24,17 +24,14 @@
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-body rounded mb-3" style="height: 75vh;">
-                        <button class="btn btn-info rounded-pill float-end" type="button">
-                            <i class="fa fa-edit"></i> Edit
-                        </button>
-                        <h2>{{menuItem.menuItemName}}</h2>
+                        <input type="text" class="text-start" style="width: 200px" name="Price" min="0" placeholder="Name of Menu Item" />
                         <hr class="my-3" style="color: black" />
                         <div class="row">
                             <div class="col">
                                 <h5 class="">Price:</h5>
                             </div>
                             <div class="text-end col">
-                                <input type="number" class="price text-end" style="width: 120px" name="Price" min="0" placeholder="{{{menuItem.price}}}" />
+                                <input type="number" class="price text-end" style="width: 100px" name="Price" min="0" placeholder="Amount" />
                             </div>
                         </div>
                         <hr>
@@ -45,9 +42,9 @@
                                     <select
                                       class="form-select"
                                       name="status"
-                                      style="width: 100px"
+                                      style="width: 120px"
                                       >
-                                      <option selected>{{menuItem.status}}</option>
+                                      <option selected>Choose</option>
                                       <option value="active">active</option>
                                       <option value="inactive">inactive</option>
                                       </select>
@@ -81,6 +78,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--
                             {{#each menuItemIngredient}}
                             <tr>
                                 <td>{{ingredient.ingredientName}}</td>
@@ -91,6 +89,7 @@
                                 </td>
                             </tr>
                             {{/each}}
+                        -->
                             <tr>
                                 <td>
                                     <input type="text" />

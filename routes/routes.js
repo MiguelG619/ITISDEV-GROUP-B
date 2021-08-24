@@ -7,6 +7,7 @@ const signupController = require('../controllers/signupController.js');
 const purchasingController = require('../controllers/purchasingController.js');
 const managerController = require("../controllers/managerController.JS");
 const inventoryController = require("../controllers/inventoryController.JS");
+const cashierController = require("../controllers/cashierController.JS");
 
 
 
@@ -20,6 +21,9 @@ router.post('/signup', validation.signupValidation(), signupController.postSignU
 router.get('/getCheckEmail', signupController.getCheckEmail);
 
 
+// Cashier routes
+router.get('/cashier/cashierOrders', cashierController.getAllMenuItems);
+
 // Purchasing routes
 router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
 router.get('/purchasing/purchased', purchasingController.getPurchasedIngredientsToList);
@@ -32,10 +36,15 @@ router.post('/purchasing/addPurchasedIngredient', purchasingController.addPurcha
 // Manager routes
 router.get("/manager/menuItems", managerController.getAllMenuItems);
 router.get("/manager/menuItemDetailed/:id", managerController.getMenuItemDetails);
+router.get("/managerAddMenuItem", managerController.getAddMenuItem);
+router.get("/manager/orderHistory", managerController.getAllOrderHistory);
+router.get("/manager/orderDetails/:id", managerController.getOrderDetails);
 
 // Inventory routes
 router.get("/inventory/ingredients", inventoryController.getAllIngredients);
 router.post('/inventory/addIngredient', inventoryController.addIngredient);
+router.get("/inventory/manualCount", inventoryController.getAllPurchasedIngredients);
+router.get("/inventory/discrepancyReport", inventoryController.getdiscrepancyReport);
 
 
 

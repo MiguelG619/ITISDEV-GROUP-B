@@ -20,7 +20,6 @@
     {{> navbarCashier}}
 
     <div class="row p-3 bg-light vw-100">
-
       <!-- Left Column Orders -->
       <div class="col-sm-8">
         <div class="card pb-3 mb-3 border-3 " style="border-bottom-color: #0d6efd">
@@ -29,21 +28,20 @@
           </div>
         </div>
 
-{{#each orders}}
         <div class="row row-cols-md-3 g-2">
+          {{#each menuItem}}
           <div class="col">
             <div
               class="card rounded"
-              onclick="orderAdd('{{orders}}'); this.onclick=null;"
             >
               <div class="card-body">
-                <h5 class="card-title text-center">{{orders}}</h5>
-                <p class="card-text fw-bold text-center">{{price}}</p>
+                <h5 class="card-title text-center text-info">{{menuItemName}}</h5>
+                <p class="card-text text-center">₱{{price}}</p>
               </div>
             </div>
           </div>
+          {{/each}}
         </div>
-            {{/each}}
       </div>
 
       <!-- Right Column Cart -->
@@ -51,51 +49,31 @@
         <div class="card overflow-auto" style="height: 60vh">
           <div class="card-body rounded">
             <h3>Cart</h3>
-            <hr/>
-
-{{#each cart}}
+            <hr />
             <ul id="order-list row" class="list-unstyled">
-              <li class="row">
-                <div class="col-5">
-                  <div class="fs-6">{{cart}}</div>
-                  <div class="fs-5 text-primary">{{price}}</div>
-                </div>
-                <div class="col-5">
-                  <input type="number" min="0" class="col-4" />
-                </div>
-                <div class="fs-4 col">
-                  <i class="fa-regular fa-trash-xmark"></i>
-                </div>
-                <hr />
-              </li>
+              
             </ul>
           </div>
-            {{/each}}
         </div>
 
-
-        {{#each totalPrice}}
         <div class="card">
           <div class="card-body rounded" style="height: 9vh">
             <div class="total-amount fs-5 row">
               <span class="col fw-bold">Total Amount:</span>
-              <span class="col text-end fw-bolder">{{totalPrice}}</span>
-            </div>  
-          </div> 
-          {{/each}}
+              <span class="col text-end fw-bolder">₱XXX.XX</span>
+            </div>
+          </div>
         </div>
 
-        {{#each payment}}
         <div class="card">
           <div class="card-body rounded" style="height: 9vh">
             <div class="payment fs-5 row">
-              <span class="col fw-bold">Payment:  {{payment}}</span>
+              <span class="col fw-bold">Payment:</span>
               <span class="col"
                 ><input type="number" min="0" class="form-control-sm mb-4"
               /></span>
             </div>
           </div>
-          {{/each}}
         </div>
 
         <div class="card">
@@ -108,72 +86,6 @@
       </div>
     </div>
 
-    <script>
-
-      let orderAdd = (menuItemName, menuItemPrice) => {
-
-        let orderList = document.getElementById('order-list');
-          // Create li tag
-          let orderItem = document.createElement('li');
-          orderItem.className = 'row';
-          let namePriceDiv = document.createElement('div');
-          namePriceDiv.className = 'col-5';
-
-          let nameDiv = document.createElement('div');
-          nameDiv.className = 'fs-6';
-          let nameText = document.createTextNode(menuItemName);
-          nameDiv.appendChild(nameText);
-
-          let priceDiv = document.createElement('div');
-          priceDiv.className = 'fs-5 text-primary';
-          priceText = document.createTextNode('₱'+ menuItemPrice);
-          priceDiv.appendChild(priceText);
-
-          namePriceDiv.appendChild(nameDiv);
-          namePriceDiv.appendChild(priceDiv);
-          orderItem.appendChild(namePriceDiv);
-
-          let inputDiv = document.createElement('div');
-          inputDiv.className = 'col-5';
-          let input = document.createElement('input');
-          input.setAttribute('type', 'number');
-          input.className = 'col-4';
-          orderItem.appendChild(input);
-
-          let removeItem = document.createElement('div');
-          inputDiv.className = 'fs-4 col';
-          let
-
-
-          // Create span for price color
-          let orderItemPriceSpan = document.createElement('span');
-          // Adjust price color to red
-          orderItemPriceSpan.className = 'text-danger';
-          // Create text node with menuItemName and menuItemPrice
-          let orderItemName = document.createTextNode(menuItemName);
-          let orderItemPrice = document.createTextNode('₱'+ menuItemPrice);
-          orderItemPriceSpan.appendChild(orderItemPrice);
-          // Attach text to li
-          orderItem.appendChild(orderItemName);
-          orderItem.appendChild(orderItemPriceSpan);
-          // Atach LI to parent id=order-list
-          orderItem.className = 'border-bottom border-5 border-light py-3';
-          // Create user input for quantity
-          let quantity = document.createElement('input');
-          quantity.setAttribute('type', 'number');
-          quantity.className = 'quantity-input';
-          orderList.appendChild(quantity);
-          orderList.appendChild(orderItem);
-
-
-
-        };
-    </script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-      crossorigin="anonymous"
-    ></script>
+    
   </body>
 </html>

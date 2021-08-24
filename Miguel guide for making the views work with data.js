@@ -285,3 +285,47 @@ app.get('/addIngredients', (req, res) => {
     
     
 });
+
+
+const Ingredients = require("./models/IngredientModel.js");
+const Unit = require("./models/UnitModel.js");
+const User = require("./models/UserModel.js");
+const Order = require("./models/OrderModel.js");
+const OrderMenuItem = require("./models/orderMenuItemsModel.js");
+const MenuItem = require("./models/menuItemModel.js");
+app.get('/add', (req, res) => {
+
+    Order.findOne({number: 1})
+    .exec((err, result) => {
+        if (err) return handleError(err);
+
+        const order = result;
+        MenuItem.findOne({menuItemName: 'Joyful Chicken'})
+        .exec()
+        .then(result => {
+
+            const menuItem = result; 
+
+            const orderMenuItem = new OrderMenuItem({
+                order: order._id,
+                menuItem: menuItem._id,
+                quantity: 1
+            });
+
+            orderMenuItem.save()
+            .then(result => {
+                res.send(result);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        })
+        .catch(err => {
+
+        });
+
+        
+
+
+    });
+});

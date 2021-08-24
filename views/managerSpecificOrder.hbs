@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Orders Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <!-- 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript" src="date.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" /> -->
 </head>
 
 <body>
@@ -46,10 +47,11 @@
                             <tbody>
                                 {{#each orders}}
                                 <tr>
-                                    <td class="text-center">{{menuItem}}</td>
-                                    <td class="text-center">{{price}}</td>
+                                    <td class="text-start">{{menuItem.menuItemName}}</td>
+                                    <td class="text-center">{{menuItem.price}}</td>
                                     <td class="text-center">{{quantity}}</td>
-                                    <td class="text-center">{{totalAmount}}</td>
+                                    <!-- TEMPORARY -->
+                                    <td class="text-center">500</td>
                                 </tr>
                                 {{/each}}
                             </tbody>
