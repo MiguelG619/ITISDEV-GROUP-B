@@ -147,15 +147,17 @@
 <section class="menu">
   <div class="row  row-cols-md-3 g-2">
     {{#each purchasedIngredients}}
-    <div class="col">
-      <!-- mini challenge button -->
-      <div class="card rounded" >
-     <!-- onclick="orderAdd('Spaghetti'); this.onclick=null;"> -->
-        <div class="card-body">
-          <h5 class="card-title text-center" >{{purchasedIngredientName}}</h5>
+    <a href="/addPurchased/{{_id}}" style="text-decoration: none">
+      <div class="col">
+        <!-- mini challenge button -->
+        <div class="card rounded" >
+       <!-- onclick="orderAdd('Spaghetti'); this.onclick=null;"> -->
+          <div class="card-body">
+            <h5 class="card-title text-center text-info" >{{purchasedIngredientName}}</h5>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
     {{/each}}
 
   </div>

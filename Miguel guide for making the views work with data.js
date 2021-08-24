@@ -15,34 +15,33 @@
         10. Go to the hbs file and input  the attributes needed
             *Use purchasing as referencesfield in  the schema
             *The ones inputted in the puchasing hbs are matched with the attributes/
-*/
+            */
 
     // ***creation of Ingredients
     // Schemas needed
     // Import the neede models/schemas
     // Include the ref inside the desired schema that you want to create
-const Ingredients = require("./models/IngredientModel.js");
-const Unit = require("./models/UnitModel.js");
+    const Ingredients = require("./models/IngredientModel.js");
+    const Unit = require("./models/UnitModel.js");
 
 
-app.get('/addIngredients', (req, res) => {
+    app.get('/addIngredients', (req, res) => {
 
     // find the id of the Unit to paste it inside the Ingredient
     // Pastas are meassure ing grams so we find first the "g" in the Unit model
-    Unit.findOne({name: 'g'})
+    Unit.findOne({abbrev: 'g'})
     .exec((err, result) => {
         if (err) return handleError(err);
 
         // Take note the spelling of ingredient and the schema in the right of the equal sign
         // create an ingredient schema
         const ingredient = new Ingredients({
-            ingredientName: 'Pasta',
-            quantityPerStock: 5,
+            ingredientName: 'Cheese',
+            totalQuantity: 10,
             // id of the Unit because a ref inside a schema only allows the id of an object
             // https://www.youtube.com/watch?v=7xYMulfv-PU 
             uom: result._id,
-            reorderPoint: 5,
-            isLowStock: true
+            reorderPoint: 10
         });
 
         //save the ingredient
@@ -57,73 +56,73 @@ app.get('/addIngredients', (req, res) => {
     });
 
     
- 
+    
 });
 
-const Ingredients = require("./models/IngredientModel.js");
-const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
-const Unit = require("./models/UnitModel.js");
+    const Ingredients = require("./models/IngredientModel.js");
+    const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
+    const Unit = require("./models/UnitModel.js");
 
-app.get('/addPurchasedIngredients', (req, res) => {
+    app.get('/addPurchasedIngredients', (req, res) => {
 
-    Unit.findOne({abbrev: 'ml'})
-    .exec()
-    .then(result => {
-        const unit = result
-        console.log(result);
-
-    Ingredients.findOne({ingredientName: 'Cheese'})
-    .exec((err, result) => {
-        if (err) return handleError(err);
-
-        const purchasedIngredient = new PurchasedIngredients({
-            ingredient: result._id,
-            quantityPerStock: 500,
-            purchasedIngredientName: 'Coke Sakto',
-            uom: unit._id,
-            quantityPuchased: 10
-        });
-
-        purchasedIngredient.save()
+        Unit.findOne({abbrev: 'ml'})
+        .exec()
         .then(result => {
-            res.send(result);
+            const unit = result
+            console.log(result);
+
+            Ingredients.findOne({ingredientName: 'Cheese'})
+            .exec((err, result) => {
+                if (err) return handleError(err);
+
+                const purchasedIngredient = new PurchasedIngredients({
+                    ingredient: result._id,
+                    quantityPerStock: 500,
+                    purchasedIngredientName: 'Coke Sakto',
+                    uom: unit._id,
+                    quantityPuchased: 10
+                });
+
+                purchasedIngredient.save()
+                .then(result => {
+                    res.send(result);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            });
         })
         .catch(err => {
             console.log(err);
         });
-    });
-    })
-    .catch(err => {
-        console.log(err);
+
+        
     });
 
- 
-});
-
- getToPurchasedIngredients: (req, res) => {
-    Ingredients.find({isLowStock: true})
-    .sort({ createdAt: -1})
-    .exec()
-    .then(result => {
-      res.render('purchasingToPurchase', {ingredients: result});
-    })
-    .catch(err => {
-      res.status(404).json({
-        message: "Error",
+    getToPurchasedIngredients: (req, res) => {
+        Ingredients.find({isLowStock: true})
+        .sort({ createdAt: -1})
+        .exec()
+        .then(result => {
+          res.render('purchasingToPurchase', {ingredients: result});
+      })
+        .catch(err => {
+          res.status(404).json({
+            message: "Error",
+        });
       });
-    });
-  }, 
+    }, 
 
 
-app.get('/addOrder', (req, res) => {
+    app.get('/addOrder', (req, res) => {
 
-    User.findOne({email: 'lmg@yahoo.com'})
-    .exec()
-    .then(result => {
-        const user = result;
+        User.findOne({email: 'lmg@yahoo.com'})
+        .exec()
+        .then(result => {
+            const user = result;
 
-        let today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
+            let today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
         const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         const yyyy = today.getFullYear();
 
@@ -142,18 +141,18 @@ app.get('/addOrder', (req, res) => {
             console.log(err);
         });
     })
-    .catch(err => {
-        console.log(err);
+        .catch(err => {
+            console.log(err);
+        });
+
+        
     });
 
- 
-});
 
-
-  const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
-const Ingredients = require("../models/IngredientModel.js");
-const PurchasedOrder = require("../models/PurchasedOrderModel.js");
-const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredientsModel.js");
+    const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
+    const Ingredients = require("../models/IngredientModel.js");
+    const PurchasedOrder = require("../models/PurchasedOrderModel.js");
+    const PurchasedOrderIngredients = require("../models/PurchasedOrderIngredientsModel.js");
 // MUST IMPORT REFERENCE MODEL WHEN IT IS GOING TO BE USED
 const Unit = require("../models/UnitModel.js");
 
@@ -167,13 +166,13 @@ const purchasingController = {
     .exec()
     .then(result => {
       res.render('purchasedIngredients', { purchasedIngredients: result });
-    })
+  })
     .catch((err) => {
       res.status(404).json({
         message: "Error",
-      });
     });
-  },
+  });
+},
 
   // for purchased
   getPurchasedIngredientsToList:  (req, res) => {
@@ -182,45 +181,45 @@ const purchasingController = {
     .exec()
     .then(result => {
       res.render('purchased', { purchasedIngredients: result });
-    })
+  })
     .catch((err) => {
       res.status(404).json({
         message: "Error",
-      });
     });
-  },
+  });
+},
 
-  getToPurchasedIngredients: (req, res) => {
+getToPurchasedIngredients: (req, res) => {
     Ingredients.find({isLowStock: true})
     .populate('uom')
     .sort({ createdAt: -1})
     .exec()
     .then(result => {
       res.render('purchasingToPurchase', {ingredients: result});
-    })
+  })
     .catch(err => {
       res.status(404).json({
         message: "Error",
-      });
     });
-  }, 
+  });
+}, 
 
-  getAllPurchasedOrders:  (req, res) => {
+getAllPurchasedOrders:  (req, res) => {
     PurchasedOrder.find()
     .populate('user', 'firstName lastName')
     .sort({ createdAt: -1 })
     .exec()
     .then(result => {
       res.render('purchasedOrdersHome', { purchasedOrder: result });
-    })
+  })
     .catch((err) => {
       res.status(404).json({
         message: "Error",
-      });
     });
-  }, 
-  
-  getPurchasedOrderDetails: (req, res) => {
+  });
+}, 
+
+getPurchasedOrderDetails: (req, res) => {
     const id = req.params.id;
     // console.log(id);
     PurchasedOrderIngredients.find({purchaseOrder: id})
@@ -228,13 +227,13 @@ const purchasingController = {
     .exec()
     .then(result => {
       res.render('purchasedOrderDetails', {purchasedIngredients: result.purchasedIngredients});
-    })
+  })
     .catch(err => {
       res.status(404).json({
         message: "Error"
-      });
     });
-  },
+  });
+},
 
 
 };
@@ -251,39 +250,38 @@ const PurchasedOrderIngredients = require("./models/PurchasedOrderIngredientsMod
 
 app.get('/addIngredients', (req, res) => {
 
-    PurchasedOrder.findOne({date: '08/22/2021'})
+    PurchasedOrder.findOne({date: '08/24/2021'})
     .exec()
     .then(result => {
         const po = result;
+        
 
-        PurchasedIngredients.findOne({purchasedIngredientName: 'Coke Litro'})
+        PurchasedIngredients.findOne({purchasedIngredientName: 'Coke Sakto'})
         .exec()
         .then(result => {
             const pi = result;
 
-        const purchasedOrderIngredients = new PurchasedOrderIngredients({
-            purchasedOrder: po._id,
-            purchasedIngredients: pi._id,
-            quantityPurchased: 5
-        });
+            const purchasedOrderIngredients = new PurchasedOrderIngredients({
+                purchasedOrder: po._id,
+                purchasedIngredients: pi._id,
+                quantityPurchased: 3
+            });
 
-                purchasedOrderIngredients.save()
-                .then(result => {
-                    res.send(result);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            purchasedOrderIngredients.save()
+            .then(result => {
+                res.send(result);
             })
             .catch(err => {
                 console.log(err);
             });
 
-    })
+        })
         .catch(err => {
             console.log(err);
         });
 
+
+    })
     
- 
+    
 });

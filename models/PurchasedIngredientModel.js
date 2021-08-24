@@ -23,7 +23,7 @@ var purchasedIngredientSchema = new Schema({
         ref: 'Unit',
         required: true
     },
-    quantityPuchased: {
+    quantityPurchased: {
         type: Number,
         required: true
     }

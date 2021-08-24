@@ -85,12 +85,13 @@ const purchasingController = {
   },
 
   getToPurchasedIngredients: (req, res) => {
-    Ingredients.find({isLowStock: true})
+    // checks if totalquantity in ingredients/ system count is less than or equal to reorderpoint
+    Ingredients.find( { $expr: { $lte: [ "$totalQuantity" , "$reorderPoint" ] } } )
     .populate('uom', 'abbrev')
     .sort({ createdAt: -1})
     .exec()
     .then(result => {
-      res.render('purchasingToPurchase', {ingredients: result});
+     res.render('purchasingToPurchase', {ingredients: result});
     })
     .catch(err => {
       res.status(404).json({

@@ -23,7 +23,7 @@ var ingredientSchema = new Schema({
     reorderPoint: {
         type: Number,
         required: true
-    },
+    }
     
 }, {timestamps: true});
 
