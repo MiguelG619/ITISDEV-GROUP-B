@@ -27,7 +27,7 @@
              <!-- Button trigger modal -->
              <button type="button" class="btn btn-primary col-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-circle-plus"></i>
-              Create Purchased Ingredient
+                Create Purchased Ingredient
             </button>
 
             <!-- Modal -->
@@ -64,7 +64,7 @@
                               id="name"
                               aria-describedby="basic-addon3"
                               name="name"
-                              required
+                              required 
                               />
                             </div>
 
@@ -85,7 +85,6 @@
                               <option value="{{{ingredientName}}}">{{ingredientName}}</option>
                               {{/each}}
                               </select>
-
                           </div>
 
                           <div class="input-group mb-3">
@@ -126,14 +125,7 @@
                         </div>
 
                         <div class="float-end">
-                          <a href="/purchasing/purchased">
-                            <button
-                            type="submit"
-                            class="btn btn-secondary mx-3"
-                            >
-                            Cancel
-                          </button>
-                        </a>
+                          <button type="button" class="btn btn-secondary mx-3" data-bs-dismiss="modal">Cancel</button>                         
                         <button type="submit" class="d-inline float-end btn btn-m bg-info" value="Upload">
                           Save
                         </button>

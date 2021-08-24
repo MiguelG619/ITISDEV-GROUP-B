@@ -134,7 +134,7 @@ getAllPurchasedIngredients:  (req, res) => {
       })
        .exec()
        .then(result => {
-        res.render('purchasedOrderDetails/', {purchasedOrderDetails: result});
+        res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
       })
        .catch(err => {
         res.status(404).json({

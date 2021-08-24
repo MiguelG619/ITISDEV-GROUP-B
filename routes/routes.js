@@ -6,6 +6,7 @@ const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
 const purchasingController = require('../controllers/purchasingController.js');
 const managerController = require("../controllers/managerController.JS");
+const inventoryController = require("../controllers/inventoryController.JS");
 
 
 
@@ -28,19 +29,15 @@ router.get('/purchasing/purchasedOrdersDetails/:id', purchasingController.getPur
 router.post('/purchasing/addPurchasedIngredient', purchasingController.addPurchasedIngredient);
 
 
-
-/*
-router.get("/purchasing/purchasedIngredients", purchasingController.getAllPurchasedIngredients);
-router.get("/purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
-router.get("/purchasing/toPurchase", purchasingController.getToPurchasedIngredients);
-router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
-router.get("/purchasing/purchasedOrdersDetails/:id", purchasingController.getPurchasedOrderDetails);
-router.post("/purchasing/addPurchasedIngredient", purchasingController.addPurchasedIngredient);
-*/
-
 // Manager routes
 router.get("/manager/menuItems", managerController.getAllMenuItems);
 router.get("/manager/menuItemDetailed/:id", managerController.getMenuItemDetails);
+
+// Inventory routes
+router.get("/inventory/ingredients", inventoryController.getAllIngredients);
+router.post('/inventory/addIngredient', inventoryController.addIngredient);
+
+
 
 
 module.exports = router;
