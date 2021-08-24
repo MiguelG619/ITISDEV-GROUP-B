@@ -4,7 +4,7 @@ const router = express.Router();
 const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
-const purchasingController = require("../controllers/purchasingController");
+const purchasingController = require('../controllers/purchasingController.js');
 
 
 
@@ -19,12 +19,22 @@ router.get('/getCheckEmail', signupController.getCheckEmail);
 
 
 // Purchasing routes
+router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
+router.get('/purchasing/purchased', purchasingController.getPurchasedIngredientsToList);
+router.get('/purchasing/toPurchase', purchasingController.getToPurchasedIngredients);
+router.get('/purchasing/purchasedOrders', purchasingController.getAllPurchasedOrders);
+router.get('/purchasing/purchasedOrdersDetails/:id', purchasingController.getPurchasedOrderDetails);
+router.post('/purchasing/addPurchasedIngredient', purchasingController.addPurchasedIngredient);
+
+
+
+/*
 router.get("/purchasing/purchasedIngredients", purchasingController.getAllPurchasedIngredients);
 router.get("/purchasing/purchased", purchasingController.getPurchasedIngredientsToList);
 router.get("/purchasing/toPurchase", purchasingController.getToPurchasedIngredients);
 router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
 router.get("/purchasing/purchasedOrdersDetails/:id", purchasingController.getPurchasedOrderDetails);
 router.post("/purchasing/addPurchasedIngredient", purchasingController.addPurchasedIngredient);
-
+*/
 
 module.exports = router;
