@@ -5,6 +5,7 @@ const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
 const purchasingController = require('../controllers/purchasingController.js');
+const managerController = require("../controllers/managerController.JS");
 
 
 
@@ -36,5 +37,10 @@ router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOr
 router.get("/purchasing/purchasedOrdersDetails/:id", purchasingController.getPurchasedOrderDetails);
 router.post("/purchasing/addPurchasedIngredient", purchasingController.addPurchasedIngredient);
 */
+
+// Manager routes
+router.get("/manager/menuItems", managerController.getAllMenuItems);
+router.get("/manager/menuItemDetailed/:id", managerController.getMenuItemDetails);
+
 
 module.exports = router;
