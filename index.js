@@ -32,12 +32,50 @@ app.use(session({
 }));
 
 // define the paths contained to './routes/routes.js
-const Ingredients = require("./models/IngredientModel.js");
+const MenuItem = require("./models/menuItemModel.js");
 const Unit = require("./models/UnitModel.js");
-const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
-const PurchasedOrder = require("./models/PurchasedOrderModel.js");
-const User = require("./models/UserModel.js");
-const PurchasedOrderIngredients = require("./models/PurchasedOrderIngredientsModel.js");
+const MenuItemIngredient = require("./models/menuItemIngredientsModel.js");
+const Ingredients = require("./models/IngredientModel.js");
+
+
+app.get('/addIngredients', (req, res) => {
+
+    Unit.findOne({abbrev: 'g'})
+    .exec((err, result) => {
+            if (err) return handleError(err);
+
+        const unit = result; 
+
+    MenuItem.findOne({menuItemName: 'Pesto'})
+    .exec()
+    .then(result => {
+        const menuItem = result;
+
+        Ingredients.findOne({ingredientName: 'Cheese'})
+        .exec((err, result) => {
+            if (err) return handleError(err);
+
+            const menuItemIngredient = new MenuItemIngredient({
+                ingredient: result._id,
+                menutItem: menuItem._id,
+                quantity: 7,
+                uom: unit._id,
+            });
+
+            menuItemIngredient.save()
+            .then(result => {
+                res.send(result);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+  });
+});
 
 
 app.use('/', routes);

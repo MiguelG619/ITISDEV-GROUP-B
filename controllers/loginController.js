@@ -34,10 +34,8 @@ const loginController = {
 
                         console.log(user.email);
 
-                        if(user.role == 'purchasing');
-                           // res.send('Purchasing Page Not Currently working');
-                            // res.redirect('/purchasing/purchasedOrders');
-                            //res.render('purchasedOrdersHome', details);
+                        if(user.role == 'purchasing')
+                             res.redirect('/purchasing/purchasedOrders');
                         else if(user.role == 'cashier')
                             res.render('cashierOrders');    // Not final, to be replaced
                         else if(user.role == 'sales manager')
