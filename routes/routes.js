@@ -24,6 +24,7 @@ router.get("/purchasing/purchased", purchasingController.getPurchasedIngredients
 router.get("/purchasing/toPurchase", purchasingController.getToPurchasedIngredients);
 router.get("/purchasing/purchasedOrders", purchasingController.getAllPurchasedOrders);
 router.get("/purchasing/purchasedOrdersDetails/:id", purchasingController.getPurchasedOrderDetails);
+router.post("/purchasing/addPurchasedIngredient", purchasingController.addPurchasedIngredient);
 
 
 module.exports = router;

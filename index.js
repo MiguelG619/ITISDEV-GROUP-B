@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const express = require('express');
 const hbs = require('hbs');
 const routes = require('./routes/routes');
@@ -13,7 +13,7 @@ dotenv.config();
 const port = process.env.PORT;
 const hostname = process.env.HOSTNAME;
 // Hindi na ginamit ni sir Arren ito  kasi meron an sa express na urlencoded sa baba
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.urlencoded({extended: false}));
 
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
@@ -32,6 +32,14 @@ app.use(session({
 }));
 
 // define the paths contained to './routes/routes.js
+const Ingredients = require("./models/IngredientModel.js");
+const Unit = require("./models/UnitModel.js");
+const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
+const PurchasedOrder = require("./models/PurchasedOrderModel.js");
+const User = require("./models/UserModel.js");
+const PurchasedOrderIngredients = require("./models/PurchasedOrderIngredientsModel.js");
+
+
 app.use('/', routes);
 
 

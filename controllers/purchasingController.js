@@ -7,8 +7,8 @@ const Unit = require("../models/UnitModel.js");
 
 const purchasingController = {
 
-
-  getAllPurchasedIngredients:  (req, res) => {
+// GET FUNCTIONS
+getAllPurchasedIngredients:  (req, res) => {
 
     /* 
       find in mongoose that is used in sir Arren's db.js 
@@ -17,7 +17,7 @@ const purchasingController = {
       Populate
       https://stackoverflow.com/questions/38051977/what-does-populate-in-mongoose-mean
       https://www.youtube.com/watch?v=3p0wmR973Fw
-    */
+      */
 
     //you can populate two times if needed
     // for the ingredients, you only need to populate the uom as seen in getToPurchasedIngredients below
@@ -31,9 +31,9 @@ const purchasingController = {
        /* purchasedIngredients is just a name, can be anything
         ^ this is used in the hbs file, usually placed inside the #each
         result is the Ingredient schema where the uom is loaded and available for use in the hbs
-      */ 
-      res.render('purchasedIngredients', { purchasedIngredients: result });
-    })
+        */ 
+        res.render('purchasedIngredients', { purchasedIngredients: result });
+      })
     .catch((err) => {
       res.status(404).json({
         message: "Error",
@@ -56,6 +56,7 @@ const purchasingController = {
         const unit = result;
 
         PurchasedIngredients.find()
+        .populate('uom')
         .sort({ createdAt: -1 })
         .exec()
         .then(result => {
@@ -92,7 +93,7 @@ const purchasingController = {
     .exec()
     .then(result => {
      res.render('purchasingToPurchase', {ingredients: result});
-    })
+   })
     .catch(err => {
       res.status(404).json({
         message: "Error",
@@ -121,26 +122,77 @@ const purchasingController = {
        ex. purchasedOrderIngredients has purchasedIngredients ref
        so first populate the purchasedIngredients
        then populate the uom so it can be used in the hbs
-     */
-    const id = req.params.id;
-    PurchasedOrderIngredients.find({purchasedOrder: id})
-    .populate({
+       */
+       const id = req.params.id;
+       PurchasedOrderIngredients.find({purchasedOrder: id})
+       .populate({
         path: 'purchasedIngredients',
-      populate: {
-        path: 'uom',
-        model: 'Unit'
-      }
-    })
+        populate: {
+          path: 'uom',
+          model: 'Unit'
+        }
+      })
+       .exec()
+       .then(result => {
+        res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
+      })
+       .catch(err => {
+        res.status(404).json({
+          message: "Error"
+        });
+      });
+     },
+
+
+
+
+
+  // POST FUNCTIONS
+
+  addPurchasedIngredient: (req, res) => {
+    const userSystemIngredient = req.body.systemIngredient;
+    const userUom = req.body.uom;
+
+    Unit.findOne({abbrev: userUom})
     .exec()
     .then(result => {
-      res.render('purchasedOrderDetails', {purchasedOrderDetails: result});
+      const uom = result;
+
+      Ingredients.findOne({ingredientName: userSystemIngredient})
+      .exec()
+      .then(result => {
+        const systemIngredient = result;
+
+        const purchasedIngredient = new PurchasedIngredients({
+          ingredient: systemIngredient._id,
+          quantityPerStock: req.body.quantityPerStock,
+          purchasedIngredientName: req.body.name,
+          uom: uom._id,
+          quantityPurchased: 0
+        });
+       
+        purchasedIngredient.save()
+        .then(result => {
+          res.redirect('/purchasing/purchased');
+
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     })
     .catch(err => {
-      res.status(404).json({
-        message: "Error"
-      });
+      console.log(err);
     });
-  },
+    
+
+  
+  }
 
 
 };

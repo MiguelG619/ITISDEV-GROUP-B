@@ -39,14 +39,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    ...
+                    ... 
                     <section>
                       <div
                       class="card position-absolute top-10 start-50 translate-middle"
                       style="width: 100vh"
                       >
                       <div style="background-color:#F8F5F1;">
-                        <form class="m-4 pb-5">
+                        <form action="/purchasing/addPurchasedIngredient" method="POST" class="m-4 pb-5">
                           <header class="pb-3">
                             <h3 class="text-start">Create Purchased Ingredient</h3>
                           </header>
@@ -61,8 +61,10 @@
                               <input 
                               type="text"
                               class="form-control"
-                              id="purchased-ingredient-name"
+                              id="name"
                               aria-describedby="basic-addon3"
+                              name="name"
+                              required
                               />
                             </div>
 
@@ -75,10 +77,12 @@
                               <select
                               class="form-select"
                               id="inputGroupSelect01"
+                              name="systemIngredient"
+                              required
                               >
                               <option selected>Choose...</option>
                               {{#each ingredients}}
-                              <option value="{{{name}}}">{{ingredientName}}</option>
+                              <option value="{{{ingredientName}}}">{{ingredientName}}</option>
                               {{/each}}
                             </select>
 
@@ -93,10 +97,12 @@
                             <select
                             class="form-select"
                             id="inputGroupSelect01"
+                            name="uom"
+                            required
                             >
                             <option selected>Choose...</option>
                             {{#each unitOfMeasurement}}
-                            <option value="{{{uom}}}">{{abbrev}}</option>
+                            <option value="{{{abbrev}}}">{{abbrev}}</option>
                             {{/each}}
                           </select>
 
@@ -112,13 +118,15 @@
                           type="number"
                           min="0"
                           class="form-control"
-                          id="purchased-quantity-per-stock"
+                          id="quantityPerStock"
                           aria-describedby="basic-addon3"
+                          name="quantityPerStock"
+                          required
                           />
                         </div>
 
                         <div class="float-end">
-                          <a href="/purchasingPurchased">
+                          <a href="/purchasing/purchased">
                             <button
                             type="submit"
                             class="btn btn-secondary mx-3"
@@ -126,20 +134,21 @@
                             Cancel
                           </button>
                         </a>
-                        <button type="submit" class="d-inline float-end btn btn-m bg-info">
+                        <button type="submit" class="d-inline float-end btn btn-m bg-info" value="Upload">
                           Save
                         </button>
                       </div>
                     </section>
                   </form>
+
                 </div>
               </div>
             </section>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</span>
+  </span>
 </div>
 </div>
 </section>
@@ -151,16 +160,17 @@
       <div class="col">
         <!-- mini challenge button -->
         <div class="card rounded" >
-       <!-- onclick="orderAdd('Spaghetti'); this.onclick=null;"> -->
-          <div class="card-body">
-            <h5 class="card-title text-center text-info" >{{purchasedIngredientName}}</h5>
-          </div>
+         <!-- onclick="orderAdd('Spaghetti'); this.onclick=null;"> -->
+         <div class="card-body">
+          <h3 class="card-title text-center text-info" >{{purchasedIngredientName}}</h3>
+          <p class="card-text text-center text-secondary">{{quantityPerStock}} {{uom.abbrev}}</p>
         </div>
       </div>
-    </a>
-    {{/each}}
+    </div>
+  </a>
+  {{/each}}
 
-  </div>
+</div>
 </section>
 </div>
 
@@ -173,7 +183,7 @@
       <h5>Purchased</h5>
       <hr>
       <ul id="order-list row" class="list-unstyled">
-        <li class="row">
+        <!-- <li class="row">
           <div class="col-5 mb-3">
             <div class="fs-6">{{name}}</div>
           </div>
@@ -182,7 +192,7 @@
             <i class="fa-regular fa-trash-xmark"></i>
           </div>
           <hr>
-        </li>
+        </li> -->
 
       </ul>
     </div>
