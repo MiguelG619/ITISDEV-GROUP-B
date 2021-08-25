@@ -35,13 +35,13 @@ const loginController = {
                         console.log(user.email);
 
                         if(user.role == 'purchasing')
-                             res.redirect('/purchasing/purchasedOrders');
+                             res.redirect('/purchasing/toPurchase');
                         else if(user.role == 'cashier')
-                            res.render('cashierOrders');    // Not final, to be replaced
+                            res.redirect('/cashier/cashierOrders');    // Not final, to be replaced
                         else if(user.role == 'sales manager')
-                            res.render('managerMenu');      // Not final, to be replaced
+                            res.redirect('/manager/menuItems');      // Not final, to be replaced
                         else if(user.role == 'inventory')
-                            res.render('inventory');        // Not final, to be replaced
+                            res.redirect('/inventory/ingredients');    
                         else
                             res.send('Error page');
                     }

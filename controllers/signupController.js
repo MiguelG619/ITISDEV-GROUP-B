@@ -44,7 +44,8 @@ const signupController = {
         
                 db.insertOne(User, user, function(flag) {
                     if(flag) {
-                        res.send('firstName: ' + firstName +'lastName: ' + lastName + 'email: ' + email);
+                        res.redirect('/login')
+                        //res.send('firstName: ' + firstName +'lastName: ' + lastName + 'email: ' + email);
                     }
                 });
             });
