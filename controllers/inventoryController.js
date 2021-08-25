@@ -98,4 +98,4 @@ const managerController = {
 
 };
 
-module.exports = managerController;
+module.exports = inventoryController;
