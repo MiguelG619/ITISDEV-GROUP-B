@@ -3,7 +3,7 @@ const Unit = require("../models/UnitModel.js");
 const PurchasedIngredients = require("../models/PurchasedIngredientModel.js");
 const Discrepancy = require("../models/DiscrepancyModel.js");
 
-const managerController = {
+const inventoryController = {
 
 
 	getAllIngredients: (req, res) => {

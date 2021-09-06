@@ -1,203 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Purchased Ingredients</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+  <!-- <link rel="stylesheet" href="assets/css/styles.css" /> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  <title>Orders</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+  <script type="text/javascript" src="/js/purchased.js"></script>
+
 </head>
+
 <body>
 
   <title>Purchasing</title>
-
   {{> navbarPurchasing}} 
 
-  <!-- Left column Orders -->
-  <div class="bg-light p-3 row vw-100">
-    <div class="col-sm-8 ">
-      <section>
-        <div class="card pb-3 mb-3 border-3 " style="border-bottom-color: #0d6efd">
-          <div class="card-body rounded text-right row" style="height: 9vh;">
-            <span class="col">
-              <h3 class="text-secondary">Purchased Ingredient</h3>
-            </span>
-            <span class="createPurchasedIngredient text-end col fs-6 pt-1">
-             <!-- Button trigger modal -->
-             <button type="button" class="btn btn-primary col-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="fa-solid fa-circle-plus"></i>
-              Create Purchased Ingredient
-            </button>
+  <div class="bg-light p-3" style="height: 100vh;">
+    <div class="card border-3 " style="border-bottom-color: #0d6efd">
+      <div class="card-body rounded ">
+        <h3 class="text-secondary">Purchased Ingredients</h3>
+        <form class="col">
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    ... 
-                    <section>
-                      <div
-                      class="card position-absolute top-10 start-50 translate-middle"
-                      style="width: 100vh"
-                      >
-                      <div style="background-color:#F8F5F1;">
-                        <form action="/purchasing/addPurchasedIngredient" method="POST" class="m-4 pb-5">
-                          <header class="pb-3">
-                            <h3 class="text-start">Create Purchased Ingredient</h3>
-                          </header>
+          <div class="row">
+            <label for="exampleInputEmail1" style="width: 180px" class="form-label ">Purchased Ingredient</label>
+            <select
+            class="form-select "
+            name="purchasedIngredient"
+            required
+            style="width: 200px"
+            >
+            <option selected>Choose...</option>
+            {{#each purchasedIngredients}}
+            <option id="purchasedIngredient" value="{{{purchasedIngredientName}}}">{{purchasedIngredientName}}</option>
+            {{/each}}
+          </select>
 
-                          <section>
-                            <div class="input-group mb-3">
-                              <span
-                              class="input-group-text col-4 bg-info"
-                              id="basic-addon3"
-                              >Name</span
-                              >
-                              <input 
-                              type="text"
-                              class="form-control"
-                              id="name"
-                              aria-describedby="basic-addon3"
-                              name="name"
-                              required 
-                              />
-                            </div>
+          <label for="exampleInputPassword1" style="width: 70px" class="form-label">Count</label>
+          <input type="number" class=" form-control" style="width: 80px" min="0" name="qty" id="qty">
 
-                            <div class="input-group mb-3">
-                              <span
-                              class="input-group-text col-4 bg-info"
-                              id="basic-addon3"
-                              >System Ingredient</span
-                              >
-                              <select
-                              class="form-select"
-                              id="inputGroupSelect01"
-                              name="systemIngredient"
-                              required
-                              >
-                              <option selected>Choose...</option>
-                              {{#each ingredients}}
-                              <option value="{{{ingredientName}}}">{{ingredientName}}</option>
-                              {{/each}}
-                            </select>
-                          </div>
-
-                          <div class="input-group mb-3">
-                            <span
-                            class="input-group-text col-4 bg-info"
-                            id="basic-addon3"
-                            >Unit Of Measurement</span
-                            >
-                            <select
-                            class="form-select"
-                            id="inputGroupSelect01"
-                            name="uom"
-                            required
-                            >
-                            <option selected>Choose...</option>
-                            {{#each unitOfMeasurement}}
-                            <option value="{{{abbrev}}}">{{abbrev}}</option>
-                            {{/each}}
-                          </select>
-
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <span
-                          class="input-group-text col-4 bg-info"
-                          id="basic-addon3"
-                          >Quantity Per Stock</span
-                          >
-                          <input
-                          type="number"
-                          min="0"
-                          class="form-control"
-                          id="quantityPerStock"
-                          aria-describedby="basic-addon3"
-                          name="quantityPerStock"
-                          required
-                          />
-                        </div>
-
-                        <div class="float-end">
-                          <button type="button" class="btn btn-secondary mx-3" data-bs-dismiss="modal">Cancel</button>                         
-                          <button type="submit" class="d-inline float-end btn btn-m bg-info" value="Upload">
-                            Save
-                          </button>
-                        </div>
-                      </section>
-                    </form>
-
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
+          <button type="submit" class=" btn btn-primary col-1 ms-3" id="purchase">Purchase</button>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-</section>
+      </form>
 
-<section class="menu">
-  <div class="row  row-cols-md-3 g-2">
-    {{#each purchasedIngredients}}
-    <a href="/addPurchased/{{_id}}" style="text-decoration: none">
-      <div class="col">
-        <!-- mini challenge button -->
-        <div class="card rounded" >
-         <!-- onclick="orderAdd('Spaghetti'); this.onclick=null;"> -->
-         <div class="card-body">
-          <h3 class="card-title text-center text-info" >{{purchasedIngredientName}}</h3>
-          <p class="card-text text-center text-secondary">{{quantityPerStock}} {{uom.abbrev}}</p>
+    </div>
+  </div>
+
+
+  <div class="col-md-12 mt-3">
+    <div class="card">
+      <div class="card-body overflow-auto rounded" style="height: 75vh">
+
+
+        <div class="table-responsive rounded">
+          <table class="table overflow-auto table-hover table-hover">
+            <thead>
+              <tr class="bg-secondary bg-linear-gradien, text-light">
+                <th class="text-center">Name</th>
+                <th class="text-center">System Ingredient</th>
+                <th class="text-center">Quantity per Stock</th>
+                <th class="text-center">Unit Of Measurement</th>
+                <th class="text-center">Quantity</th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each purchasedIngredients}}
+              <tr>
+                <td>{{ingredient.ingredientName}}</td>
+                <td class="text-center">{{purchasedIngredientName}}</td>
+                <td class="text-center">{{quantityPerStock}}</td>
+                <td class="text-center">{{uom.abbrev}}</td>
+                <td class="text-center">{{uom.abbrev}}</td>
+              </tr>
+              {{/each}}
+
+
+            </tbody>
+          </table>
         </div>
+
       </div>
-    </div>
-  </a>
-  {{/each}}
 
-</div>
-</section>
-</div>
-
-
-<!-- Right Column Cart -->
-<!-- dynamic javascript parang minichallenge 3 -->
-<div class="col-sm-4">
-  <div class="card overflow-auto" style="height: 79vh;">
-    <div class="card-body rounded">
-      <h5>Purchased</h5>
-      <hr>
-      <ul id="order-list row" class="list-unstyled">
-        <!-- <li class="row">
-          <div class="col-5 mb-3">
-            <div class="fs-6">{{name}}</div>
-          </div>
-          <div class="col-5"><input type="number" min="0" class="col-4"></div>
-          <div class="fs-4 col">
-            <i class="fa-regular fa-trash-xmark"></i>
-          </div>
-          <hr>
-        </li> -->
-
-      </ul>
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-body rounded">
-      <button class="w-100 btn btn-lg bg-primary text-light">Receive Purchase</button>
-    </div>
-  </div>
-</div>
-</div>  
 
 
 </body>
-</html>   
+
+</html>

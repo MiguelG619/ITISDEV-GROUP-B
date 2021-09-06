@@ -113,6 +113,21 @@
       });
     }, 
 
+    const Conversion = require("./models/ConversionModel.js");
+app.get('/addConversion', async (req, res) => {
+    const conversion = new Conversion({
+        unitA: "kg",
+        unitB: "g",
+        unitBMeasure: 1000
+    });
+    try {
+        await conversion.save();
+        res.send(conversion);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 
     app.get('/addOrder', (req, res) => {
 

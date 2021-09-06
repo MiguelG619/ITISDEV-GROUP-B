@@ -26,11 +26,15 @@ const signupController = {
 
             res.render('signup', details);
         }
+        else if (req.body.password != req.body.confirmPW) {
+            res.redirect(401, '/signup');
+        }
         else {
             var firstName = req.body.firstName;
             var lastName = req.body.lastName;
             var email = req.body.email;
             var password = req.body.password;
+            var confirmPW = req.body.confirmPW;
             var role = req.body.role;
     
             bcrypt.hash(password, saltRounds, function(err, hash) {

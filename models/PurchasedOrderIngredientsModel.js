@@ -12,7 +12,7 @@ var purchasedOrderIngredientsSchema = new Schema({
     purchasedOrder: {
         type: Schema.Types.ObjectId,
         ref: 'PurchasedOrder',
-        required: true
+
     },
     // yung isang foreign key
     purchasedIngredients: {

@@ -3,21 +3,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
  
 var conversionSchema = new mongoose.Schema({
-    fromUnitOfMeasurement: {
-        type: Schema.Types.ObjectId, 
-        ref: 'Unit',
+    unitA: {
+        type: String,
         required: true
     },
-    toUnitOfMeasurement: {
-        type: Schema.Types.ObjectId, 
-        ref: 'Unit',
+    unitB: {
+        type: String,
         required: true
     },
-    fromRatio: {
+    unitAMeasure: {
         type: Number,
-        required: true
+        default: 1
     },
-    toRatio: {
+    unitBMeasure: {
         type: Number,
         required: true
     }

@@ -22,36 +22,25 @@ const managerController = {
 	},
 
 
-	getMenuItemDetails: (req, res) => {
+	getMenuItemDetails: async (req, res) => {
 
-
-
-		MenuItem.findById(req.params.id)
-		.exec()
-		.then(result => { 
-			const menuItem = result;
-
-			MenuItemIngredient.find({menutItem: req.params.id})
+		try {
+			const menuItem = await MenuItem.findById(req.params.id).exec();
+			const menuItemIngredient = await MenuItemIngredient.find({menutItem: req.params.id})
 			.populate('ingredient', 'ingredientName')
 			.populate('uom', 'abbrev')
-			.exec()
-			.then(result => {
-				
-				res.render('managerMenuItemDetailed', {
-					menuItemIngredient: result,
-					menuItem: menuItem
+			.exec();
+			const uom = await Unit.find().exec();
+			const ingredients = await Ingredients.find().exec();
+			res.render('managerMenuItemDetailed', {
+					menuItemIngredient: menuItemIngredient,
+					menuItem: menuItem,
+					ingredient: ingredients,
+					uom: uom
 				});
-				
-			})
-			.catch(err => {
-				console.log(err);
-			});
-		})
-		.catch(err => {
+		} catch (err) {
 			console.log(err);
-		});
-
-		
+		}
 	},
 
 	getAllOrderHistory: (req, res) => {

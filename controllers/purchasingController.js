@@ -42,50 +42,42 @@ getAllPurchasedIngredients:  (req, res) => {
   },
 
   // for purchased
-  getPurchasedIngredientsToList:  (req, res) => {
-
-    Ingredients.find()
-    .exec()
-    .then(result => {
-      const systemIngredients = result;
-
-      Unit.find()
-      .exec()
-      .then(result => {
-
-        const unit = result;
-
-        PurchasedIngredients.find()
-        .populate('uom')
-        .sort({ createdAt: -1 })
-        .exec()
-        .then(result => {
-          res.render('purchased', { 
-            purchasedIngredients: result, 
-            ingredients: systemIngredients,
-            unitOfMeasurement: unit 
-          });
-        })
-        .catch((err) => {
-          res.status(404).json({
-            message: "Error",
-          });
-        });
-
-      })
-      .catch(err => {
-        console.log(err);
-      })
-
-    })
-    .catch(err => {
+  getPurchasedIngredientsToList: async (req, res) => {
+    try {
+      const purchasedIngredients = await PurchasedIngredients.find()
+      .populate('ingredient', 'ingredientName')
+      .populate('uom', 'abbrev')
+      .sort({ createdAt: -1 })
+      .exec();
+      res.render('purchased', {purchasedIngredients: purchasedIngredients});
+    } catch (err) {
       console.log(err);
-    })
+    }
 
-    
   },
 
-  getToPurchasedIngredients: (req, res) => {
+  addPurchasedIngredient: async (req, res) => {
+    try {
+      const purchasedIngredients = await PurchasedIngredients.findOne({purchasedIngredientName: purchasedIngredient})
+      .populate('ingredient', 'ingredientName')
+      .populate('uom', 'abbrev')
+      .sort({ createdAt: -1 })
+      .exec();
+
+      const pOIngredients = new PurchasedOrderIngredients({
+        purchasedIngredients: purchasedIngredients._id,
+        quantityPurchased: req.query.qty
+      });
+      await pOIngredients.save();
+
+      } catch (err) {
+        console.log(err);
+      }
+      
+    },
+    
+
+    getToPurchasedIngredients: (req, res) => {
     // checks if totalquantity in ingredients/ system count is less than or equal to reorderpoint
     Ingredients.find( { $expr: { $lte: [ "$totalQuantity" , "$reorderPoint" ] } } )
     .populate('uom', 'abbrev')
@@ -170,7 +162,7 @@ getAllPurchasedIngredients:  (req, res) => {
           uom: uom._id,
           quantityPurchased: 0
         });
-       
+
         purchasedIngredient.save()
         .then(result => {
           res.redirect('/purchasing/purchased');
@@ -191,7 +183,7 @@ getAllPurchasedIngredients:  (req, res) => {
     });
     
 
-  
+
   }
 
 
