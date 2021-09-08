@@ -126,15 +126,17 @@ const purchasingController = {
         addedValue = converted + ingredient.totalQuantity;
       }
 
-      const convertedValue = await Ingredients.findOneAndUpdate({
-        ingredientName: purchased.ingredient.ingredientName
-      }, {
-        totalQuantity: addedValue
-      }, {
-        new: true
-      }
-      )
-      .exec();
+      const convertedValue = await Ingredients.findOneAndUpdate(
+        {
+          ingredientName: purchased.ingredient.ingredientName,
+        },
+        {
+          totalQuantity: addedValue,
+        },
+        {
+          new: true,
+        }
+      ).exec();
 
       return convertedValue;
       //findOneAndUpdate the ingredient
@@ -153,7 +155,7 @@ const purchasingController = {
       let today = new Date();
       let date = today.toLocaleDateString();
       let time = today.toLocaleTimeString();
-      today = date + " " + time;
+      today = date + " - " + time;
 
       const purchasedOrder = new PurchasedOrder({
         user: user._id,
@@ -171,12 +173,15 @@ const purchasingController = {
         try {
           await purchasedOrderIngredients.save();
 
-          let converted = await purchasingController.convert(cart[i].purchasedIngredientName, purchasedQuantity[i]);
+          let converted = await purchasingController.convert(
+            cart[i].purchasedIngredientName,
+            purchasedQuantity[i]
+          );
         } catch (err) {
           console.log(err);
         }
       }
-       res.send(purchasedOrder);
+      res.send(purchasedOrder);
 
       // multiple add to system ingredients
     } catch (err) {

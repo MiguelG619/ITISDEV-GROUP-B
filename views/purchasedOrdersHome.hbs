@@ -51,7 +51,6 @@
                     <table class="table overflow-auto table-hover">
                         <thead>
                             <tr class="bg-secondary bg-linear-gradien, text-light">
-                                <th class="text-center">Purchased Order ID</th>
                                 <th class="text-center">Date Purchased</th>
                                 <th class="text-center">Employee Name</th>
                                 <th></th>
@@ -61,12 +60,11 @@
                             {{#each purchasedOrder}}
                                     <tr >
                                         <td class="text-center">
-                                            <a href="/purchasing/purchasedOrdersDetails/{{_id}}" class="stretched-link text-dark"
+                                            <a href="/purchasing/purchasedOrdersDetails/{{_id}}" class="text-dark"
                                             style="text-decoration: none">
-                                            1
+                                            {{date}}
                                              </a>
                                         </td>
-                                        <td class="text-center">{{date}}</td>
                                         <td class="text-center">{{user.firstName}} {{user.lastName}}</td>
                                     </tr>
                                
