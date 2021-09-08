@@ -1,5 +1,5 @@
-$(document).ready( () => {
-	$('#purchase').click( () => {
+$(document).ready ( () => {
+    $('#purchase').click( () => {
 
         const purchasedIngredient = $('#purchasedIngredient').val();
         const qty = $('#qty').val();
@@ -23,7 +23,6 @@ $(document).ready( () => {
                 });
                     
         }
-        
-    });
+});
 
-}
+

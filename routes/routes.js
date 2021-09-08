@@ -31,7 +31,8 @@ router.get('/cashier/cashierOrders', cashierController.getAllMenuItems);
 // Purchasing routes
 router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
 router.get('/purchasing/purchased', purchasingController.getPurchasedIngredientsToList);
-router.get('/addPurchased', purchasingController.addPurchasedIngredient);
+router.get('/listPurchased', purchasingController.listIngredient);
+router.get('/makePurchasedOrder', purchasingController.makePurchasedOrder);
 router.get('/purchasing/toPurchase', purchasingController.getToPurchasedIngredients);
 router.get('/purchasing/purchasedOrders', purchasingController.getAllPurchasedOrders);
 router.get('/purchasing/purchasedOrdersDetails/:id', purchasingController.getPurchasedOrderDetails);
