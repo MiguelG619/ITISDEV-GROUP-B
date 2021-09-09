@@ -181,7 +181,7 @@ const purchasingController = {
           console.log(err);
         }
       }
-      res.send(purchasedOrder);
+      res.send(true);
 
       // multiple add to system ingredients
     } catch (err) {

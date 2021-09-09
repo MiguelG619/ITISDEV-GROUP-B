@@ -12,7 +12,7 @@ var menuItemSchema = new mongoose.Schema({
     status: {
         type: String,
         default: 'active',
-        enum: ['active', 'inactive']
+        enum: ['active', 'inactive', 'old version']
     },
     price: {
         type: Number,

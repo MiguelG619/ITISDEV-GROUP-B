@@ -1,134 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Menu</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+        />
+        <title>Menu</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
+        />
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </head>
 
     {{> navbarManager}}
 
-<body>
-    <div class="bg-light p-3" style="height: 96vh;">
-        <div class="card border-3 " style="border-bottom-color: #0d6efd">
-            <div class="card-body rounded">
-                <h3 class="text-secondary">Create Menu Item </h3>
-                
+    <body>
+        <div class="bg-light p-3" style="height: 96vh">
+            <div class="card border-3" style="border-bottom-color: #0d6efd">
+                <div class="card-body rounded">
+                    <h3 class="text-secondary">Create Menu Item</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-body rounded mb-3" style="height: 75vh;">
-                        <input type="text" class="text-start" style="width: 200px" name="Price" min="0" placeholder="Name of Menu Item" />
-                        <hr class="my-3" style="color: black" />
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="">Price:</h5>
+            <div class="row">
+                <div class="col-md-4 mt-3">
+                    <div class="card">
+                        <div
+                            class="card-body rounded mb-3"
+                            style="height: 67vh"
+                        >
+                            <button
+                                class="btn btn-info rounded-pill float-end"
+                                type="button"
+                                id="save"
+                            >
+                                <i class="fa fa-edit"></i> Save 
+                            </button>
+                            <input id="menuItem" type="text" name="menuItem"  placeholder="Name" >
+                            <hr class="my-3" style="color: black" />
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="">Price:</h5>
+                                </div>
+                                <div class="text-end col">
+                                    <input
+                                        type="number"
+                                        class="price text-end"
+                                        style="width: 120px"
+                                        name="Price"
+                                        min="0"
+                                        id="price"
+                                       
+                                    />
+                                </div>
                             </div>
-                            <div class="text-end col">
-                                <input type="number" class="price text-end" style="width: 100px" name="Price" min="0" placeholder="Amount" />
+                            <hr />
+                            <div class="row">
+                                <span class="col">
+                                    <span
+                                        class="d-flex justify-content-between"
+                                    >
+                                        <h3 class="status">Status:</h3>
+                                        active 
+                                    </span>
+                                </span>
+
+                                <div
+                                    class="delete-menu-item"
+                                    style="margin-top: 150px"
+                                ></div>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <span class="col">
-                                <span class="d-flex justify-content-between">
-                                    <h3 class="status">Status:</h3>
-                                    <select
-                                      class="form-select"
-                                      name="status"
-                                      style="width: 120px"
-                                      >
-                                      <option selected>Choose</option>
-                                      <option value="active">active</option>
-                                      <option value="inactive">inactive</option>
-                                      </select>
-                                </span>
-                            </span>
-                            
-                    <div class="delete-menu-item" style="margin-top: 150px">
-                        <button class="align-self-end btn btn-secondary border rounded-pill float-end" type="button">
-                            <i class="fa fa-trash-o"></i> Delete Menu
-                            Item
-                        </button>
                     </div>
+                </div>
+
+                <div class="col-md-8 mt-3">
+                    <div class="card">
+                        <div
+                            class="card-body overflow-auto rounded"
+                            style="height: 70vh"
+                        >
+                            <div>
+                                <h2>Recipe</h2>
+                                <form class="col">
+                                    <div class="d-flex mb-3">
+                                        <select
+                                            id="ingredient"
+                                            class="form-select"
+                                            name="ingredient"
+                                            required
+                                            style="width: 150px"
+                                        >
+                                            <option selected>Ingredient</option>
+                                            {{#each ingredient}}
+                                            <option
+                                                value="{{{ingredientName}}}"
+                                            >
+                                                {{ingredientName}}
+                                            </option>
+                                            {{/each}}
+                                        </select>
+
+                                        <input
+                                            type="number"
+                                            class="mx-3 form-control"
+                                            style="width: 80px"
+                                            min="0"
+                                            name="qty"
+                                            id="qty"
+                                            placeholder="Qty"
+                                        />
+
+                                        <select
+                                            id="unit"
+                                            class="form-select"
+                                            name="unit"
+                                            required
+                                            style="width: 90px"
+                                        >
+                                            <option selected>Unit</option>
+                                            {{#each uom}}
+                                            <option value="{{{abbrev}}}">
+                                                {{abbrev}}
+                                            </option>
+                                            {{/each}}
+                                        </select>
+
+                                        <button
+                                            class="btn mb-2 ms-5 btn-primary rounded-pill float-end"
+                                            type="button"
+                                            id="addIngredient"
+                                        >
+                                            <i
+                                                class="fa-regular fa-square-plus"
+                                            ></i>
+                                            Add Ingredient
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="table-responsive rounded">
+                                <table class="table overflow-auto">
+                                    <thead>
+                                        <tr class="bg-success text-light">
+                                            <th class="text-center">
+                                                Ingredient Name
+                                            </th>
+                                            <th class="text-center">
+                                                Quantity
+                                            </th>
+                                            <th class="text-center">UOM</th>
+                                            <th class="text-center"></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ingredientsTable">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-6 mt-3">
-        <div class="card">
-            <div class="card-body overflow-auto rounded" style="height: 70vh">
-                <h2>Recipe</h2>
-                <div class="table-responsive rounded">
-                    <table class="table overflow-auto">
-                        <thead>
-                            <tr class="bg-success text-light">
-                                <th class="text-center">Ingredient Name</th>
-                                <th class="text-center">Quantity</th>
-                                <th class="text-center">UOM</th>
-                                <th class="text-center"></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!--
-                            {{#each menuItemIngredient}}
-                            <tr>
-                                <td>{{ingredient.ingredientName}}</td>
-                                <td class="text-center">{{quantity}}</td>
-                                <td class="text-center">{{uom.abbrev}}</td>
-                                <td class="text-center">
-                                    <i class="fa fa-trash-o" style="text-align: center"></i>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        -->
-                            <tr>
-                                <td>
-                                    <input type="text" />
-                                    <br />
-                                </td>
-                                <td class="text-center">
-                                    <input type="number" min="0" class="col-4" />
-                                </td>
-                                <td class="text-center">
-                                    <input type="number" min="0" class="col-4" />
-                                </td>
-                                <td class="text-center">
-                                    <button class="btn btn-primary" type="button" style="
-                                    background: #ffffff;
-                                    color: rgb(0, 0, 0);
-                                    border-style: none;
-                                    ">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<script>
+    $(document).ready(() => {
+        var listIngredient = [];
+        var listUnit = [];
+        var listQuantity = [];
 
-        </div>
+        $("#addIngredient").click(() => {
+            const ingredient = $("#ingredient").val();
+            const quantity = $("#qty").val();
+            const unit = $("#unit").val();
 
-    </div>
-    <a href="managerOrdersHistory.html">
-        <button class=" col-md-2 btn mt-2 me-3 btn-primary rounded-pill float-end" type="button">
-            <i class="fa fa-save"></i> Save
-        </button>
-    </a>
-
-</div>
-</div>
-</div>
+            if (
+                ingredient == "Ingredient" ||
+                quantity == "" ||
+                unit == "Unit" 
+            )
+                alert(
+                    "Please input the appropriate input in all fields!"
+                );
+            else {
+                let ingredientInfo =  `<tr>
+                                      <td>`+ingredient+`</td>
+                                      <td class="text-center">`+quantity+`</td>
+                                      <td class="text-center">`+unit+`</td>
+                                      </tr>`;
 
 
-</body>
+                $("#ingredientsTable").append(ingredientInfo);
 
+                $("#ingredient").prop("selectedIndex", 0);
+                $("#unit").prop("selectedIndex", 0);
+                $("#qty").val("");
+                //store it in array 
+                listIngredient.push(ingredient);
+                listQuantity.push(quantity);
+                listUnit.push(unit);
+            }
+
+        });
+
+        
+
+        $("#save").click( () => {
+            const ingredient = $("#ingredient").val();
+            const quantity = $("#qty").val();
+            const unit = $("#unit").val();
+            const name = $("#menuItem").val();
+            const price = $("#price").val();
+             if (
+                name == "" ||
+                price == ""
+            )
+                alert(
+                    "Please input the appropriate input in all fields!"
+                );
+            else {
+                $.get("/addMenuItem", {
+                    menuItem: name,
+                    price: price,
+                    listIngredient: listIngredient,
+                    listQuantity: listQuantity,
+                    listUnit: listUnit
+                }, result => {
+                    console.log(result);
+                    listIngredient = [];
+                    listQuantity = [];
+                    listUnit = [];
+                    alert('Created Menu Item!');
+                    window.location.replace(result.url);
+                });
+            }
+
+        });
+
+        // whendadidng in database change status of previous menu item to inactive and then make a copy then insert the added
+    });
+</script>
+    </body>
 </html>

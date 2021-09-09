@@ -217,8 +217,8 @@
       const qty = $('#qty').val();
       
 
-      if(purchasedIngredient == '' || qty == ''){
-        console.log("Lack of Input");
+      if(purchasedIngredient == 'Choose...' || qty == ''){
+        alert('Please input all both the name and quantity!');
 
       }
       else {
@@ -252,9 +252,10 @@
      $('#done').click( () => {
      // console.log(cart[0].purchasedIngredientName);
     //console.log(purchasedQuantity[0]);
-      if (cart.length === 0)
+      if (cart.length === 0) {
         $('#done').prop('disabled', false);
-      else {
+        alert('Add ingredients first!');
+      } else {
          $.get("/makePurchasedOrder", {
           cart: cart,
           purchasedQuantity: purchasedQuantity
@@ -262,7 +263,7 @@
           cart = [];
           purchasedQuantity = [];
           $("#purchasedTable").remove();
-          console.log(result);
+          alert('Purchased Ingredients are added!');
          });
         
       }

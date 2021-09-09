@@ -50,8 +50,7 @@
                             >
                                 <i class="fa fa-edit"></i> Done 
                             </button>
-                            <h2 >{{menuItem.menuItemName}}</h2>
-                            <input id="oldMenuItem" type="hidden" name="oldMenuItem" value ="{{{menuItem.menuItemName}}}" >
+                            <input id="menuItem" type="text" name="menuItem"  placeholder="Name" >
                             <hr class="my-3" style="color: black" />
                             <div class="row">
                                 <div class="col">
@@ -64,7 +63,8 @@
                                         style="width: 120px"
                                         name="Price"
                                         min="0"
-                                        placeholder="{{{menuItem.price}}}"
+                                        id="price"
+                                       
                                     />
                                 </div>
                             </div>
@@ -81,14 +81,12 @@
                                             style="width: 100px"
                                         >
                                             <option selected>
-                                                {{menuItem.status}}
+                                                active
                                             </option>
                                             <option value="active">
                                                 active
                                             </option>
-                                            <option value="inactive">
-                                                inactive
-                                            </option>
+                                            
                                         </select>
                                     </span>
                                 </span>
@@ -183,25 +181,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="ingredientsTable">
-                                        {{#each menuItemIngredient}}
-                                        <tr>
-                                            <td>
-                                                {{ingredient.ingredientName}}
-                                            </td>
-                                            <td class="text-center">
-                                                {{quantity}}
-                                            </td>
-                                            <td class="text-center">
-                                                {{uom.abbrev}}
-                                            </td>
-                                            <td class="text-center">
-                                                <i
-                                                    class="fa fa-trash-o"
-                                                    style="text-align: center"
-                                                ></i>
-                                            </td>
-                                        </tr>
-                                        {{/each}}
+                                        
                                     </tbody>
                                 </table>
                             </div>

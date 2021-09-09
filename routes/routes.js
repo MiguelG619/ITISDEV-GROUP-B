@@ -43,6 +43,8 @@ router.post('/purchasing/addPurchasedIngredient', purchasingController.addPurcha
 router.get("/manager/menuItems", managerController.getAllMenuItems);
 router.get("/manager/menuItemDetailed/:id", managerController.getMenuItemDetails);
 router.get("/managerAddMenuItem", managerController.getAddMenuItem);
+router.get("/addMenuItem", managerController.addMenuItem);
+router.get("/addIngredientsMenu", managerController.addIngredientsMenu);
 router.get("/manager/orderHistory", managerController.getAllOrderHistory);
 router.get("/manager/orderDetails/:id", managerController.getOrderDetails);
 
