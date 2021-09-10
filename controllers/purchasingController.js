@@ -220,7 +220,7 @@ const purchasingController = {
       });
   },
 
-  getPurchasedOrderDetails: (req, res) => {
+  getPurchasedOrderDetails: async (req, res) => {
     /* https://stackoverflow.com/questions/19222520/populate-nested-array-in-mongoose --- paths
        populate the ref inside a ref
        ex. purchasedOrderIngredients has purchasedIngredients ref
@@ -228,65 +228,51 @@ const purchasingController = {
        then populate the uom so it can be used in the hbs
        */
     const id = req.params.id;
-    PurchasedOrderIngredients.find({ purchasedOrder: id })
-      .populate({
-        path: "purchasedIngredients",
-        populate: {
-          path: "uom",
-          model: "Unit",
-        },
-      })
-      .exec()
-      .then((result) => {
-        res.render("purchasedOrderDetails", { purchasedOrderDetails: result });
-      })
-      .catch((err) => {
-        res.status(404).json({
-          message: "Error",
-        });
-      });
+    try {
+      const pOI = await PurchasedOrderIngredients.find({ purchasedOrder: id })
+        .populate({
+          path: "purchasedIngredients",
+          populate: {
+            path: "uom",
+            model: "Unit",
+          },
+        })
+        .exec();
+
+      res.render("purchasedOrderDetails", { purchasedOrderDetails: pOI });
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   // POST FUNCTIONS
 
-  addPurchasedIngredient: (req, res) => {
-    const userSystemIngredient = req.body.systemIngredient;
-    const userUom = req.body.uom;
+  addPurchasedIngredient: async (req, res) => {
+    const inputName = req.body.name;
+    const inputIngredient = req.body.ingredient;
+    const inputUOM = req.body.uom;
+    const inputQuantityPerStock = req.body.quantityPerStock;
 
-    Unit.findOne({ abbrev: userUom })
-      .exec()
-      .then((result) => {
-        const uom = result;
+    try {
+      const uom = await Unit.findOne({ abbrev: inputUOM }).exec();
+      const ingredient = await Ingredients.findOne({
+        ingredientName: inputIngredient,
+      }).exec();
 
-        Ingredients.findOne({ ingredientName: userSystemIngredient })
-          .exec()
-          .then((result) => {
-            const systemIngredient = result;
-
-            const purchasedIngredient = new PurchasedIngredients({
-              ingredient: systemIngredient._id,
-              quantityPerStock: req.body.quantityPerStock,
-              purchasedIngredientName: req.body.name,
-              uom: uom._id,
-              quantityPurchased: 0,
-            });
-
-            purchasedIngredient
-              .save()
-              .then((result) => {
-                res.redirect("/purchasing/purchased");
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
+      const purchasedIngredient = new PurchasedIngredients({
+        ingredient: ingredient._id,
+        quantityPerStock: inputQuantityPerStock,
+        purchasedIngredientName: inputName,
+        uom: uom._id,
+        quantityPurchased: 0,
       });
+
+      await purchasedIngredient.save();
+      res.redirect("/purchasing/purchased");
+    } catch (err) {
+      console.log(err);
+    }
+
   },
 };
 

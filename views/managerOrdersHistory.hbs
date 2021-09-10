@@ -40,7 +40,6 @@
                             <table class="table overflow-auto table-hover">
                                 <thead>
                                     <tr class="bg-secondary bg-linear-gradien, text-light">
-                                        <th class="text-center">Order ID</th>
                                         <th class="text-center">Employee Name</th>
                                         <th class="text-center">Total Amount</th>
                                         <th class="text-center">Date</th>
@@ -50,11 +49,10 @@
                                 <tbody>
                                     {{#each Orders}}
                                     <tr>
-                                        <td class="text-center"><a href="/manager/orderDetails/{{_id}}" class="stretched-link text-dark"
+                                        <td class="text-center"><a href="/manager/orderDetails/{{_id}}" class="text-dark"
                                             style="text-decoration: none">
-                                            {{number}}
+                                            {{user.firstName}} {{user.lastName}}
                                              </a></td>
-                                        <td class="text-center">{{user.firstName}} {{user.lastName}}</td>
                                         <td class="text-center">{{totalAmount}}</td>
                                         <td class="text-center">{{date}}</td>
                                     </tr>

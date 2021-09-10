@@ -33,6 +33,7 @@ router.get('/boss/getAllUsers', bossController.getAllUsers);
 
 // Cashier routes
 router.get('/cashier/cashierOrders', cashierController.getAllMenuItems);
+router.get('/sell', cashierController.sell);
 
 // Purchasing routes
 router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
