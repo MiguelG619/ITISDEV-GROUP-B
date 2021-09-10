@@ -11,10 +11,6 @@ var orderMenuItemsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'MenuItem',
         required: true
-    },
-    quantity: {
-        type: Number,
-        required: true
     }
 }, {timestamps: true});
 

@@ -32,58 +32,6 @@ app.use(session({
 }));
 
 // define the paths contained to './routes/routes.js
-const Conversion = require("./models/ConversionModel.js");
-const Ingredients = require("./models/IngredientModel.js");
-const PurchasedIngredients = require("./models/PurchasedIngredientModel.js");
-app.get('/addConversion', async (req, res) => {
-  
-    try {
-        const purchased = await PurchasedIngredients.findOne({
-            purchasedIngredientName: "Coke Litro"
-        })
-        .populate('ingredient', 'ingredientName')
-        .populate('uom', 'abbrev');
-
-        const ingredient = await Ingredients.findOne({
-            ingredientName: purchased.ingredient.ingredientName
-        })
-        .populate('uom', 'abbrev');
- 
-        // Find conversion based on purchasedIngredient and systemIngredient uom
-        const conversion = await Conversion.findOne({
-            $and: [
-            { $or: [ { unitA: purchased.uom.abbrev }, { unitA : ingredient.uom.abbrev } ] },
-            { $or: [ { unitB: purchased.uom.abbrev }, { unitB : ingredient.uom.abbrev } ] }
-            ]
-        });
-
-        let addedValue;
-        let converted;
-
-        if (purchased.uom.abbrev == ingredient.uom.abbrev) {
-            addedValue = (purchased.quantityPerStock * purchased.quantityPurchased)
-            + ingredient.totalQuantity;
-        } 
-        else if (purchased.uom.abbrev == conversion.unitB) {
-            converted = (purchased.quantityPerStock * purchased.quantityPurchased) 
-                        / conversion.unitBMeasure;
-            addedValue = converted + ingredient.totalQuantity;
-        }
-        else if (purchased.uom.abbrev == conversion.unitA) {
-            converted = (purchased.quantityPerStock * purchased.quantityPurchased) 
-                        * conversion.unitBMeasure;
-            addedValue = converted + ingredient.totalQuantity;
-        }
-        res.send('' + addedValue);
-        //findOneAndUpdate the ingredient
-
-
-
-} catch (err) {
-    console.log(err);
-}
-});
-
 app.use('/', routes);
 
 

@@ -39,19 +39,14 @@
                                 <tr class="bg-secondary bg-linear-gradien, text-light">
                                     <th class="text-center">Menu Item</th>
                                     <th class="text-center">Price</th>
-                                    <th class="text-center">Quantity Ordered</th>
-                                    <th class="text-center">Total Amount</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#each orders}}
                                 <tr>
-                                    <td class="text-start">{{menuItem.menuItemName}}</td>
+                                    <td class="text-center">{{menuItem.menuItemName}}</td>
                                     <td class="text-center">{{menuItem.price}}</td>
-                                    <td class="text-center">{{quantity}}</td>
-                                    <!-- TEMPORARY -->
-                                    <td class="text-center">500</td>
                                 </tr>
                                 {{/each}}
                             </tbody>

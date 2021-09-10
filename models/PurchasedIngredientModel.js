@@ -22,10 +22,6 @@ var purchasedIngredientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Unit',
         required: true
-    },
-    quantityPurchased: {
-        type: Number,
-        required: true
     }
 }, {timestamps: true});
 
