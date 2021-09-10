@@ -42,7 +42,7 @@
                                         <th class="text-left">Name</th>
                                         <th class="text-left">Email</th>
                                         <th class="text-center">Role</th>
-                                        <th></th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,6 +51,11 @@
                                         <td class="text-left">{{firstName}} {{lastName}}</td>
                                         <td class="text-left">{{email}}</td>
                                         <td class="text-center">{{role}}</td>
+                                        <td class="text-center">
+                                            <form method="post" action="/assignRole">
+                                                <button type="assignRole" class="btn btn-primary">Assign Role</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     {{/each}}
                                 </tbody>
