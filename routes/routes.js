@@ -5,6 +5,7 @@ const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
 const logoutController = require('../controllers/logoutController');
+const bossController = require('../controllers/bossController.js');
 const purchasingController = require('../controllers/purchasingController.js');
 const managerController = require("../controllers/managerController.js");
 const inventoryController = require("../controllers/inventoryController.js");
@@ -26,6 +27,9 @@ router.get('/getLogOut', logoutController.getLogOut);
 
 router.get('/getAddUOM', uomController.getAddUOM);
 router.post('/addUOM', uomController.addUOM);
+
+// Boss routes
+router.get('/boss/getAllUsers', bossController.getAllUsers);
 
 // Cashier routes
 router.get('/cashier/cashierOrders', cashierController.getAllMenuItems);

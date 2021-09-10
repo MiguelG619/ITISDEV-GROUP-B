@@ -22,7 +22,8 @@ var userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ['cashier', 'sales manager', 'inventory', 'purchasing']
+        default: 'unassigned',
+        enum: ['boss', 'cashier', 'sales manager', 'inventory', 'purchasing']
     }
 }, {timestamps: true});
 

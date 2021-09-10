@@ -14,9 +14,13 @@ const loginController = {
             else if(req.session.role == 'sales manager')
                 res.redirect('/manager/menuItems');      // Not final, to be replaced
             else if(req.session.role == 'inventory')
-                res.redirect('/inventory/ingredients');    
+                res.redirect('/inventory/ingredients');
+            else if(req.session.role == 'boss')
+                res.redirect('/boss/getAllUsers');
+            else if(req.session.role == 'unassigned')
+                res.send('You are currently not assigned with a role. Please wait for your Boss to assign you your respective role.');
             else
-                res.send('Error page');
+                res.send('Error page');  
         }
         else {
             res.render('login');
@@ -55,7 +59,11 @@ const loginController = {
                         else if(user.role == 'sales manager')
                             res.redirect('/manager/menuItems');      // Not final, to be replaced
                         else if(user.role == 'inventory')
-                            res.redirect('/inventory/ingredients');    
+                            res.redirect('/inventory/ingredients');
+                        else if(user.role == 'boss')
+                            res.redirect('/boss/getAllUsers');
+                        else if(user.role == 'unassigned')
+                            res.send('You are currently not assigned with a role. Please wait for your Boss to assign you your respective role.');
                         else
                             res.send('Error page');
                     }
