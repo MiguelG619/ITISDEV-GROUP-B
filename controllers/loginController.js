@@ -18,7 +18,7 @@ const loginController = {
             else if(req.session.role == 'boss')
                 res.redirect('/boss/getAllUsers');
             else if(req.session.role == 'unassigned')
-                res.send('You are currently not assigned with a role. Please wait for your Boss to assign you your respective role.');
+                res.render('unassigned');
             else
                 res.send('Error page');  
         }
@@ -63,7 +63,7 @@ const loginController = {
                         else if(user.role == 'boss')
                             res.redirect('/boss/getAllUsers');
                         else if(user.role == 'unassigned')
-                            res.send('You are currently not assigned with a role. Please wait for your Boss to assign you your respective role.');
+                            res.render('unassigned');
                         else
                             res.send('Error page');
                     }
