@@ -6,7 +6,21 @@ const User = require('../models/UserModel.js');
 const loginController = {
 
     getLogIn: function (req, res) {
-        res.render('login');
+        if(req.session.email) {
+            if(req.session.role == 'purchasing')
+                res.redirect('/purchasing/toPurchase');
+            else if(req.session.role == 'cashier')
+                res.redirect('/cashier/cashierOrders');    // Not final, to be replaced
+            else if(req.session.role == 'sales manager')
+                res.redirect('/manager/menuItems');      // Not final, to be replaced
+            else if(req.session.role == 'inventory')
+                res.redirect('/inventory/ingredients');    
+            else
+                res.send('Error page');
+        }
+        else {
+            res.render('login');
+        }
     },
 
     postLogIn: function (req, res) {

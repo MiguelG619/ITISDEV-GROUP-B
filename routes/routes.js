@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require('../controllers/controller.js');
 const loginController = require('../controllers/loginController.js');
 const signupController = require('../controllers/signupController.js');
+const logoutController = require('../controllers/logoutController');
 const purchasingController = require('../controllers/purchasingController.js');
 const managerController = require("../controllers/managerController.js");
 const inventoryController = require("../controllers/inventoryController.js");
@@ -20,6 +21,7 @@ router.post('/login', loginController.postLogIn);
 router.get('/signup', signupController.getSignUp);
 router.post('/signup', validation.signupValidation(), signupController.postSignUp);
 router.get('/getCheckEmail', signupController.getCheckEmail);
+router.get('/getLogOut', logoutController.getLogOut);
 
 
 router.get('/getAddUOM', uomController.getAddUOM);
