@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-     $('#password').keyup(function() {
+    $('#password').keyup(function() {
         var password = $("#password").val();
 
         if (password.length < 8) {
@@ -41,6 +41,24 @@ $(document).ready(function () {
         else {
             $('#passwordError').text('');
             $('#password').css('border', '');
+            $('#submit').css('background-color', '#0275d8');
+            $('#submit').prop('disabled', false);
+        }
+    });
+
+    $('#confirmPW').keyup(function() {
+        var confirmPassword = $('#confirmPW').val();
+        var password = $('#password').val();
+
+        if(confirmPassword != password) {
+            $('#confirmPasswordError').text('Password does not match');
+            $('#confirmPW').css('border', '2px solid red');
+            $('#submit').css('background-color', 'grey');
+            $('#submit').prop('disabled', true);
+        }
+        else {
+            $('#confirmPasswordError').text('');
+            $('#confirmPW').css('border', '');
             $('#submit').css('background-color', '#0275d8');
             $('#submit').prop('disabled', false);
         }
