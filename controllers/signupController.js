@@ -35,7 +35,6 @@ const signupController = {
             var email = req.body.email;
             var password = req.body.password;
             var confirmPW = req.body.confirmPW;
-            var role = req.body.role;
     
             bcrypt.hash(password, saltRounds, function(err, hash) {
                 var user = {
@@ -43,7 +42,6 @@ const signupController = {
                     lastName: lastName,
                     email: email,
                     password: hash,
-                    role: role
                 }
         
                 db.insertOne(User, user, function(flag) {

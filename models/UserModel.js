@@ -23,7 +23,7 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: 'unassigned',
-        enum: ['boss', 'cashier', 'sales manager', 'inventory', 'purchasing']
+        enum: ['boss', 'cashier', 'sales manager', 'inventory', 'purchasing', 'unassigned']
     }
 }, {timestamps: true});
 
