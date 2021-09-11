@@ -193,7 +193,7 @@ const purchasingController = {
     // checks if totalquantity in ingredients/ system count is less than or equal to reorderpoint
     Ingredients.find({ $expr: { $lte: ["$totalQuantity", "$reorderPoint"] } })
       .populate("uom", "abbrev")
-      .sort({ createdAt: -1 })
+      .sort({ totalQuantity: 1 })
       .exec()
       .then((result) => {
         res.render("purchasingToPurchase", { ingredients: result });
