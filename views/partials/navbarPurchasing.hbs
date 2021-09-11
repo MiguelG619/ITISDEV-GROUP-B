@@ -16,12 +16,14 @@
                 <a class="nav-link" href="/purchasing/purchased">Purchased Ingredients</a>
             </li>
         </ul>
-        <form action="/f/contain/search" class="collapse navbar-collapse" method="get" class="d-flex" style="gap: 4px">
+        {{!-- <form action="/f/contain/search" class="collapse navbar-collapse" method="get" class="d-flex" style="gap: 4px">
             <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-info" type="submit"><strong>Search</strong></button>
+        </form> --}}
             <!-- <a href="/f//" class="btn btn-outline-secondary"><strong>Settings</strong></a>-->
+            <div class="p-2"><strong>{{session.firstName}} {{session.lastName}}</strong></div>
+            <div class="p-2">{{session.role}}</div>
             <a href="/getLogOut" class="btn btn-outline-secondary"><strong>Logout</strong></a>
-        </form>
         </div>
     </div>
 </nav>

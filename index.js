@@ -31,6 +31,11 @@ app.use(session({
     store: mongoStore.create({mongoUrl: 'mongodb+srv://draco:nAG5fKmyDbDqsUS5@itisdev-in-stock.mjmm5.mongodb.net/inventory?retryWrites=true&w=majority'})
 }));
 
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
+
 // define the paths contained to './routes/routes.js
 app.use('/', routes);
 
@@ -43,7 +48,6 @@ app.use((req, res) => {
 	res.status(404);
 	res.write("Not Found");
 });
-
 
 app.listen(port, hostname, () => {
     console.log('Server is running at:');

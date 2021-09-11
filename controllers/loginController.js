@@ -7,6 +7,13 @@ const loginController = {
 
     getLogIn: function (req, res) {
         if(req.session.email) {
+            var user = {
+                firstName: req.session.firstName,
+                lastName: req.session.lastName,
+                email: req.session.email,
+                role: req.session.role
+            }
+
             if(req.session.role == 'purchasing')
                 res.redirect('/purchasing/toPurchase');
             else if(req.session.role == 'cashier')
