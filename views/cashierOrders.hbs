@@ -95,31 +95,47 @@
 <script>
  $(document).ready( () => {
   var cart = [];
+  var priceCart = [];
   var totalPrice = 0;
-
+  var index = 0;
   $('.addOrder').click(function() {
     const menuItem = $(this).find('h5.menuItemName').text();
     const menuPricePeso = $(this).find('p.menuItemPrice').text();
     const menuPrice = menuPricePeso.substring(1);
     const amount = parseInt(menuPrice, 10);
 
-    let ordered = `<li class="row">
+    let ordered = `<li id="row`+index+`" class="row">
     <div class="col-6">
-    <div class="fs-6">`+menuItem+`</div>
+    <h4 id="menu`+index+`">`+menuItem+`</h4>
     </div>
     <div class="col-4">
-    <div class="fs-5 text-primary">`+menuPricePeso+`</div>
+    <div class="price fs-5 text-primary">`+menuPricePeso+`</div>
     </div>
     <div class="fs-4 col mb-2">
-    <i class="fa-regular fa-trash-xmark"></i>
+    <button class="btn btn-danger btn_remove mb-2 remove" name='remove' id="`+index+`">X</button>
     </div>
     <hr />
     </li>`;
     $("#orderList").append(ordered);
 
     cart.push(menuItem);
+    priceCart.push(amount);
     totalPrice += amount;
+    index++;
+    $("#total").text("₱" +  totalPrice);
+  });
 
+
+
+  $(document).on('click', '.remove', function() {
+    const button_id = $(this).attr("id");
+    $(`#row`+button_id+``).remove();
+    let i = button_id ;
+    cart.splice(i, 1);
+     index--;
+     let amount = priceCart[i];
+
+    totalPrice -= amount;
     $("#total").text("₱" +  totalPrice);
   });
 
@@ -149,24 +165,7 @@
           $("#payment").val('');
          alert("Order Complete!");
          location.reload();
-      })
-
-                // $.get("/orderIngredients", {
-                //     oldMenuItemName: oldMenuItemName,
-                //     listIngredient: listIngredient,
-                //     listQuantity: listQuantity,
-                //     listUnit: listUnit
-                // }, result => {
-                //     console.log(result);
-                //     listIngredient = [];
-                //     listQuantity = [];
-                //     listUnit = [];
-                //     alert('Ingredients are added to the Menu Item!');
-                //     window.location.replace(result.url);
-                // });
-
-
-
+      });
 
               }
 

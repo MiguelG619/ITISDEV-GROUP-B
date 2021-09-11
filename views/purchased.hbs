@@ -105,6 +105,8 @@
                         <option value="{{{abbrev}}}">{{abbrev}}</option>
                         {{/each}}
                       </select>
+                      <button type="button" class="btn btn-warning rounded ms-3 float-end"><a class="text-dark" style="text-decoration: none" href="/getAddUOMPurchasing">Add Uom</a></button>
+
 
                     </div>
 
@@ -189,6 +191,7 @@
               <th class="text-center">Quantity per Stock</th>
               <th class="text-center">Unit Of Measurement</th>
               <th class="text-center">Quantity</th>
+              <th class="text-center"></th>
 
               <th></th>
             </tr>
@@ -212,7 +215,7 @@
 
     var cart = [];
     var purchasedQuantity = [];
-
+    var index = 0;
     if (cart.length === 0)
       $('#done').prop('disabled', false);
 
@@ -227,20 +230,22 @@
       }
       else {
         $.get("/listPurchased", {
-          purchasedIngredient: purchasedIngredient,
-          qty: qty
+          purchasedIngredient: purchasedIngredient
         },
         purchasedIngredients => {
 
            // $('#purchasedIngredient').val("Choose");
 
 
-           let purchased =  `<tr>
+           let purchased =  `<tr id="row`+index+`">
            <td>`+purchasedIngredients.ingredient.ingredientName+`</td>
            <td class="text-center">`+purchasedIngredients.purchasedIngredientName+`</td>
            <td class="text-center">`+purchasedIngredients.quantityPerStock+`</td>
            <td class="text-center">`+purchasedIngredients.uom.abbrev+`</td>
            <td class="text-center">`+qty+`</td>
+           <td class="text-center"><button class="btn btn-danger btn_remove mb-2 remove" name='remove' id="` +
+                index +
+                `">X</button></td>
            </tr>`;
            $("#purchasedTable").append(purchased);
            $('#purchasedIngredient').prop('selectedIndex',0);
@@ -248,14 +253,24 @@
           //store it in array 
           cart.push(purchasedIngredients);
           purchasedQuantity.push(qty);
+          index++;
         });
+
+        $(document).on("click", ".remove", function () {
+          const button_id = $(this).attr("id");
+          // $(`#row` + button_id + ``).remove();
+          let i = button_id;
+          alert(i); 
+          // cart.splice(i, 1);
+          // purchasedQuantity.splice(i, 1);
+          // index--;
+          // console.log(cart[i]);
+      });
 
       }
     });
 
     $('#done').click( () => {
-     // console.log(cart[0].purchasedIngredientName);
-    //console.log(purchasedQuantity[0]);
     if (cart.length === 0) {
       $('#done').prop('disabled', false);
       alert('Add ingredients first!');
@@ -264,7 +279,6 @@
       cart: cart,
       purchasedQuantity: purchasedQuantity
     }, result => {
-      console.log(result);
       cart = [];
       purchasedQuantity = [];
       $("#purchasedTable").remove();

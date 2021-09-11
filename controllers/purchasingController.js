@@ -274,6 +274,19 @@ const purchasingController = {
     }
 
   },
+
+  getAllPurchasedIngredients: async (req, res) => {
+    try {
+      const purchasedIngredient = await PurchasedIngredients.find()
+      .populate("ingredient", "ingredientName")
+      .populate("uom", "abbrev")
+      .sort({ createdAt: -1 })
+      .exec();
+      res.render('purchasedIngredients', {purchasedIngredient: purchasedIngredient});
+    } catch(err) {
+      console.log(err);
+    }
+  }
 };
 
 module.exports = purchasingController;

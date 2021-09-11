@@ -25,7 +25,7 @@ router.get('/getCheckEmail', signupController.getCheckEmail);
 router.get('/getLogOut', logoutController.getLogOut);
 
 
-router.get('/getAddUOM', uomController.getAddUOM);
+
 router.post('/addUOM', uomController.addUOM);
 
 // Boss routes
@@ -41,11 +41,13 @@ router.get('/sell', cashierController.sell);
 router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
 router.get('/purchasing/purchased', purchasingController.getPurchasedIngredientsToList);
 router.get('/listPurchased', purchasingController.listIngredient);
+router.get('/getAddUOMPurchasing', uomController.getAddUOMPurchasing);
 router.get('/makePurchasedOrder', purchasingController.makePurchasedOrder);
 router.get('/purchasing/toPurchase', purchasingController.getToPurchasedIngredients);
 router.get('/purchasing/purchasedOrders', purchasingController.getAllPurchasedOrders);
 router.get('/purchasing/purchasedOrdersDetails/:id', purchasingController.getPurchasedOrderDetails);
 router.post('/purchasing/addPurchasedIngredient', purchasingController.addPurchasedIngredient);
+router.get('/purchasing/purchasedIngredients', purchasingController.getAllPurchasedIngredients);
 
 
 // Manager routes
@@ -54,14 +56,17 @@ router.get("/manager/menuItemDetailed/:id", managerController.getMenuItemDetails
 router.get("/managerAddMenuItem", managerController.getAddMenuItem);
 router.get("/addMenuItem", managerController.addMenuItem);
 router.get("/addIngredientsMenu", managerController.addIngredientsMenu);
+router.get('/getAddUOMManager', uomController.getAddUOMManager);
 router.get("/manager/orderHistory", managerController.getAllOrderHistory);
 router.get("/manager/orderDetails/:id", managerController.getOrderDetails);
 
 // Inventory routes
 router.get("/inventory/ingredients", inventoryController.getAllIngredients);
 router.post('/inventory/addIngredient', inventoryController.addIngredient);
+router.get('/getAddUOMInventory', uomController.getAddUOMInventory);
 router.get("/inventory/manualCount", inventoryController.getAllPurchasedIngredients);
 router.get("/inventory/discrepancyReport", inventoryController.getdiscrepancyReport);
+
 
 
 

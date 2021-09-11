@@ -1,9 +1,6 @@
 const Unit = require("../models/UnitModel.js");
 
 const uomController = {
-	getAddUOM: (req, res) => {
-		res.render('addUOM');
-	},
 
 	addUOM: async (req, res) => {
 		const uom = new Unit({
@@ -13,12 +10,21 @@ const uomController = {
 
 		try {
 			await uom.save();
-			res.redirect('/getAddUOM');
+			res.redirect('back');
 		} catch (err) {
 			console.log(err);
 		}
 		
-	}
+	},
+	getAddUOMManager: (req, res) => {
+		res.render('addUOMManager');
+	},
+	getAddUOMPurchasing: (req, res) => {
+		res.render('addUOMPurchasing');
+	},
+	getAddUOMInventory: (req, res) => {
+		res.render('addUOMInventory');
+	},
 
 };
 

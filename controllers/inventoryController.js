@@ -93,9 +93,7 @@ const inventoryController = {
     }
 
 
-
-
-
+	
 
 };
 
