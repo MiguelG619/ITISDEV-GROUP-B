@@ -33,8 +33,6 @@ const bossController = {
         User.findOneAndUpdate({email: email}, {role: req.body.role})
             .exec()
             .then((result) => {
-                // var allUsers = User.find({}).exec();
-                // res.render('bossAssignUsers', {Users: allUsers});
                 res.redirect('/boss/getAllUsers');
                 console.log('result: ' + result);
             })

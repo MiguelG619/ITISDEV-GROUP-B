@@ -53,7 +53,11 @@
                                         <td class="text-center">{{role}}</td>
                                         <td class="text-center">
                                             <form method="get" action="/boss/getAssignRole/{{email}}">
-                                                <button type="assignRole" class="btn btn-primary">Assign Role</button>
+                                                {{#compare email "==" ../session.email}}
+                                                    <button type="assignRole" class="btn btn-disabled" disabled>Assign Own Unallowed</button>
+                                                    {{else}}
+                                                    <button type="assignRole" class="btn btn-primary">Assign Role</button>
+                                                {{/compare}}
                                             </form>
                                         </td>
                                     </tr>
