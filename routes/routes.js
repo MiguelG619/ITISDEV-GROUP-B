@@ -30,6 +30,8 @@ router.post('/addUOM', uomController.addUOM);
 
 // Boss routes
 router.get('/boss/getAllUsers', bossController.getAllUsers);
+router.get('/boss/getAssignRole/:email', bossController.getAssignRole);
+router.post('/boss/postAssignRole', bossController.postAssignRole);
 
 // Cashier routes
 router.get('/cashier/cashierOrders', cashierController.getAllMenuItems);

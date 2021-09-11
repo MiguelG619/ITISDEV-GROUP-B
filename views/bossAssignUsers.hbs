@@ -52,7 +52,7 @@
                                         <td class="text-left">{{email}}</td>
                                         <td class="text-center">{{role}}</td>
                                         <td class="text-center">
-                                            <form method="post" action="/assignRole">
+                                            <form method="get" action="/boss/getAssignRole/{{email}}">
                                                 <button type="assignRole" class="btn btn-primary">Assign Role</button>
                                             </form>
                                         </td>

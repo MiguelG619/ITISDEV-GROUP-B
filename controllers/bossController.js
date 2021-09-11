@@ -6,7 +6,7 @@ const bossController = {
         User.find({})
             .exec()
 			.then((result) => {
-				res.render("bossAssignUsers", { Users: result });
+				res.render('bossAssignUsers', { Users: result });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -14,7 +14,33 @@ const bossController = {
     },
 
     getAssignRole: function (req, res) {
+        var email = req.params.email;
 
+        User.findOne({email: email})
+            .exec()
+            .then((result) => {
+                res.render('bossAssignRole', result);
+                console.log('result: ' + result);
+            })
+            .catch((err) => {
+				console.log(err);
+			});;
+    },
+
+    postAssignRole: function (req, res) {
+        var email = req.body.email;
+
+        User.findOneAndUpdate({email: email}, {role: req.body.role})
+            .exec()
+            .then((result) => {
+                // var allUsers = User.find({}).exec();
+                // res.render('bossAssignUsers', {Users: allUsers});
+                res.redirect('/boss/getAllUsers');
+                console.log('result: ' + result);
+            })
+            .catch((err) => {
+				console.log(err);
+			});;
     }
 }
 
