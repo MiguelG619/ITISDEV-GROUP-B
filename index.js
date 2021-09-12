@@ -15,11 +15,17 @@ const hostname = process.env.HOSTNAME;
 // Hindi na ginamit ni sir Arren ito  kasi meron an sa express na urlencoded sa baba
 //app.use(bodyParser.urlencoded({extended: false}));
 
+
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
 // Register Helpers
-hbs.registerHelper('compare', function (lvalue, operator, rvalue, options) {
+
+hbs.registerHelper('isGreaterThan', function(arg1, arg2, options) {
+    return (arg1 >= arg2) ? options.fn(this) : options.inverse(this);
+});
+
+hbs.registerHelper('compare', function(lvalue, operator, rvalue, options) {
 
     var operators, result;
 
@@ -34,15 +40,15 @@ hbs.registerHelper('compare', function (lvalue, operator, rvalue, options) {
     }
 
     operators = {
-        '==': function (l, r) { return l == r; },
-        '===': function (l, r) { return l === r; },
-        '!=': function (l, r) { return l != r; },
-        '!==': function (l, r) { return l !== r; },
-        '<': function (l, r) { return l < r; },
-        '>': function (l, r) { return l > r; },
-        '<=': function (l, r) { return l <= r; },
-        '>=': function (l, r) { return l >= r; },
-        'typeof': function (l, r) { return typeof l == r; }
+        '==': function(l, r) { return l == r; },
+        '===': function(l, r) { return l === r; },
+        '!=': function(l, r) { return l != r; },
+        '!==': function(l, r) { return l !== r; },
+        '<': function(l, r) { return l < r; },
+        '>': function(l, r) { return l > r; },
+        '<=': function(l, r) { return l <= r; },
+        '>=': function(l, r) { return l >= r; },
+        'typeof': function(l, r) { return typeof l == r; }
     };
 
     if (!operators[operator]) {
@@ -68,10 +74,10 @@ app.use(session({
     'secret': 'InStock-session',
     'resave': false,
     'saveUninitialized': false,
-    store: mongoStore.create({mongoUrl: 'mongodb+srv://draco:nAG5fKmyDbDqsUS5@itisdev-in-stock.mjmm5.mongodb.net/inventory?retryWrites=true&w=majority'})
+    store: mongoStore.create({ mongoUrl: 'mongodb+srv://draco:nAG5fKmyDbDqsUS5@itisdev-in-stock.mjmm5.mongodb.net/inventory?retryWrites=true&w=majority' })
 }));
 
-app.use(function(req,res,next){
+app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
 });
@@ -85,8 +91,8 @@ db.connect();
 
 // if the route is not defined in the server, render `../views/error.hbs`
 app.use((req, res) => {
-	res.status(404);
-	res.write("Not Found");
+    res.status(404);
+    res.write("Not Found");
 });
 
 app.listen(port, hostname, () => {

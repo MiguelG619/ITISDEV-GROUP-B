@@ -140,9 +140,15 @@
                             <td class="text-center">{{totalQuantity}}</td>
                             <td class="text-center">{{uom.abbrev}}</td>
                             <td class="text-center">{{reorderPoint}}</td>
+
+                            
                             <td style="text-align:center;">
-                              <button type="button" class="btn btn-success">Sufficient Stock</button>
-                          </td>
+                            {{#isGreaterThan reorderPoint totalQuantity}}
+                                <button type="button" class="btn btn-warning">Low Stock</button>
+                            {{else}}
+                                <button type="button" class="btn btn-success">Sufficient Stock</button>
+                            {{/isGreaterThan}}
+                            </td>
                       </tr>
                       {{/each}}
                   </a>
