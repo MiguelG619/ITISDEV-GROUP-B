@@ -67,6 +67,7 @@ router.get("/inventory/ingredients", inventoryController.getAllIngredients);
 router.post('/inventory/addIngredient', inventoryController.addIngredient);
 router.get('/getAddUOMInventory', uomController.getAddUOMInventory);
 router.get("/inventory/manualCount", inventoryController.getAllPurchasedIngredients);
+router.post("/inventory/postManualCount", inventoryController.postManualCount);
 router.get("/inventory/discrepancyReport", inventoryController.getdiscrepancyReport);
 
 

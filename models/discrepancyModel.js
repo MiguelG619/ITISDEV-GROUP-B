@@ -17,7 +17,7 @@ var discrepancySchema = new Schema({
     },
     date: {
         type: String,
-        require: true,
+        required: true,
         default: Date.now
     }
 }, {timestamps: true});

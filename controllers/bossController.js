@@ -8,6 +8,7 @@ const bossController = {
             .exec()
 			.then((result) => {
 				res.render('bossAssignUsers', { Users: result });
+                console.log(result);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -21,7 +22,7 @@ const bossController = {
             .exec()
             .then((result) => {
                 res.render('bossAssignRole', result);
-                console.log('result: ' + result);
+                console.log(result);
             })
             .catch((err) => {
 				console.log(err);
@@ -35,7 +36,6 @@ const bossController = {
             .exec()
             .then((result) => {
                 res.redirect('/boss/getAllUsers');
-                console.log('result: ' + result);
             })
             .catch((err) => {
 				console.log(err);

@@ -37,7 +37,7 @@
         <div class="card-body overflow-auto rounded" style="height: 75vh">
 
           <div class="table-responsive rounded">
-            <form action="inventoryDiscrepancyReason.html">
+            <form method="post" action="/inventory/postManualCount">
             <table class="table overflow-auto table-hover">
               <thead>
                 <tr class="bg-secondary bg-gradient">
@@ -53,15 +53,16 @@
               <tbody>
                 {{#each purchasedIngredients}}
                 <tr>
+                  <input type="hidden" name="purchasedIngredientId" class="purchasedIngredientId" id="purchasedIngredientId" value={{_id}}>
                   <td class="text-start">{{purchasedIngredientName}}</td>
                   <td class="text-center">{{quantityPerStock}}</td>
                   <td class="text-center">{{uom.abbrev}}</td>
-                  <td class="text-center"><input type="number"min="0" class="manualcount-input col-3" id="manualcount-input1"></td>
+                  <td class="text-center"><input type="number" name="manualCount" min="0" class="manualcount-input col-3" id="manualcount-input1"></td>
                 </tr>
                   {{/each}}
               </tbody>
             </table>
-            <div class="float-end"><button type="done" class="btn btn-primary">Done</button></div>
+            <div class="float-end"><button type="submit" class="btn btn-primary">Done</button></div>
           </form>
         </div>
       </div>
