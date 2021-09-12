@@ -27,6 +27,8 @@ router.get('/getLogOut', logoutController.getLogOut);
 
 
 router.post('/addUOM', uomController.addUOM);
+router.get('/getConversion', uomController.getConversion);
+router.post('/addConversion', uomController.addConversion);
 
 // Boss routes
 router.get('/boss/getAllUsers', bossController.getAllUsers);
