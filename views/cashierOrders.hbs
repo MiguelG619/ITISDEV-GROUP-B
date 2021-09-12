@@ -150,9 +150,11 @@
       alert('Insufficient Payment!');
     else {
       const change = payment - totalPrice;
+
       if (change > 0)
         alert('Change is: ₱'+change);
       else 
+        alert("Order Complete");
 
       $.get('/sell', {
         cart: cart,
@@ -163,7 +165,7 @@
          $("#orderList").remove();
           $("#total").text('');
           $("#payment").val('');
-         alert("Order Complete!");
+         alert("Order Again!");
          location.reload();
       });
 
