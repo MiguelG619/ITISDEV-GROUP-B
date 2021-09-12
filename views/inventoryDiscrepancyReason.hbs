@@ -52,11 +52,11 @@
                             {{#each ingredients}}
                                 {{!-- {{#each this}} --}}
                               <tr>
-                                <td class="text-start">{{ingredientName}}</td>
-                                <td class="text-center">{{totalQuantity}}</td>
-                                <td class="text-center">{{uom.abbrev}}</td>
-                                <td class="text-center">{{purchasedIngredientName}}</td>
-                                <td class="text-center">loss</td>
+                                <td class="text-start">{{ingredient.ingredientName}}</td>
+                                <td class="text-center">{{ingredient.totalQuantity}}</td>
+                                <td class="text-center">{{ingredient.uom.abbrev}}</td>
+                                <td class="text-center">{{manualCount}}</td>
+                                <td class="text-center">{{lossQuantity}}</td>
                                 <td>
                                     <select id="single" class="form-control form-control-chosen" data-placeholder="SELECT REASON">
                                         {{#each reason}}

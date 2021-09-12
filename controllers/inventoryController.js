@@ -86,7 +86,7 @@ const inventoryController = {
             const manualCountInput = req.body.manualCount;
             var details = [];
             var ingredientsDetails = [];
-            var isFound = 0;
+            var isFound;
 
             console.log('inputs: ' + manualCountInput.length);
 
@@ -151,24 +151,36 @@ const inventoryController = {
                     //     }
                     // }
 
-                    isFound = 0;
+                    isFound = -1;
 
                     for(let j = 0; j < ingredientsDetails.length; j++) {
                         // console.log('1- ' + ingredients[j]._id);
                         // console.log('2- ' + result[0].ingredient._id);
-                        if(result[0].ingredient.ingredientName == ingredientsDetails[j].ingredientName) {
+                        if(result[0].ingredient.ingredientName == ingredientsDetails[j].ingredient.ingredientName) {
                             console.log('2- ' + result[0].ingredient.ingredientName);
                             
                             console.log('same');
 
-                            isFound = 1;
+                            isFound = j;
                         }
                     }
 
-                    if(isFound == 0) {
-                        ingredientsDetails.push(result[0].ingredient);
+                    // if not found
+                    if(isFound == -1) {
+                        var manualCountInstance = {
+                            ingredient: result[0].ingredient,
+                            manualCount: result.manualCountInput,
+                            lossQuantity: result.lossQuantity
+                        }
 
-                        console.log(result[0].ingredient);
+                        // ingredientsDetails.push(result[0].ingredient);
+                        ingredientsDetails.push(manualCountInstance);
+
+                        // console.log(result[0].ingredient);
+                    }
+                    // if found which means this is a duplicate
+                    else if(isFound >= 0) {
+                        ingredientsDetails[isFound];
                     }
                 })
 
