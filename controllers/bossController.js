@@ -4,6 +4,7 @@ const bossController = {
 
     getAllUsers: function (req, res) {
         User.find({})
+            .sort('role')
             .exec()
 			.then((result) => {
 				res.render('bossAssignUsers', { Users: result });
