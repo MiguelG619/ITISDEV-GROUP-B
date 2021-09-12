@@ -215,6 +215,7 @@
 
     var cart = [];
     var purchasedQuantity = [];
+    var listIndex = [];
     var index = 0;
     if (cart.length === 0)
       $('#done').prop('disabled', false);
@@ -253,18 +254,20 @@
           //store it in array 
           cart.push(purchasedIngredients);
           purchasedQuantity.push(qty);
+          listIndex.push(index);
           index++;
         });
 
         $(document).on("click", ".remove", function () {
           const button_id = $(this).attr("id");
-          // $(`#row` + button_id + ``).remove();
+          $(`#row` + button_id + ``).remove();
           let i = button_id;
-          alert(i); 
-          // cart.splice(i, 1);
-          // purchasedQuantity.splice(i, 1);
-          // index--;
-          // console.log(cart[i]);
+          let num = listIndex.findIndex(item => item == i);
+          
+          cart.splice(num, 1);
+          purchasedQuantity.splice(num, 1);
+          listIndex.splice(num,1);
+
       });
 
       }

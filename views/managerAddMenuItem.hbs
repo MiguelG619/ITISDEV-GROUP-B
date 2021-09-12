@@ -267,6 +267,7 @@ Add Menu Ingredient
         var listIngredient = [];
         var listUnit = [];
         var listQuantity = [];
+        var listIndex = [];
         var index = 0;
         $("#addIngredient").click(() => {
             const ingredient = $("#ingredient").val();
@@ -301,6 +302,7 @@ Add Menu Ingredient
                 listIngredient.push(ingredient);
                 listQuantity.push(quantity);
                 listUnit.push(unit);
+                listIndex.push(index);
                 index++;
             }
 
@@ -310,10 +312,13 @@ Add Menu Ingredient
           const button_id = $(this).attr("id");
           $(`#row` + button_id + ``).remove();
           let i = button_id;
-          listIngredient.splice(i, 1);
-          listUnit.splice(i, 1);
-          listQuantity.splice(i, 1);
-          index--;
+          let num = listIndex.findIndex(item => item == i);
+          
+          listIngredient.splice(num, 1);
+          listUnit.splice(num, 1);
+          listQuantity.splice(num, 1);
+          listIndex.splice(num,1);
+          alert(listIngredient);
       });
 
         

@@ -204,7 +204,8 @@
         var listIngredient = [];
         var listUnit = [];
         var listQuantity = [];
-
+        var listIndex = [];
+        var index = 0;
         $("#addIngredient").click(() => {
             const ingredient = $("#ingredient").val();
             const quantity = $("#qty").val();
@@ -232,12 +233,26 @@
                 $("#unit").prop("selectedIndex", 0);
                 $("#qty").val("");
                 //store it in array 
-                listIngredient.push(ingredient);
+                 listIngredient.push(ingredient);
                 listQuantity.push(quantity);
                 listUnit.push(unit);
+                listIndex.push(index);
+                index++;
             }
 
         });
+
+        $(document).on("click", ".remove", function () {
+          const button_id = $(this).attr("id");
+          $(`#row` + button_id + ``).remove();
+          let i = button_id;
+          let num = listIndex.findIndex(item => item == i);
+          
+          listIngredient.splice(num, 1);
+          listUnit.splice(num, 1);
+          listQuantity.splice(num, 1);
+          listIndex.splice(num,1);
+      });
 
         $("#doneAdding").click( () =>  {
             const oldMenuItemName = $("#oldMenuItem").val();
