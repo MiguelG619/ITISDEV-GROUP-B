@@ -85,6 +85,8 @@ const inventoryController = {
             const purchasedIngredientsId = req.body.purchasedIngredientId;
             const manualCountInput = req.body.manualCount;
             var details = [];
+            var ingredientsDetails = [];
+            var isFound = 0;
 
             console.log('inputs: ' + manualCountInput.length);
 
@@ -100,6 +102,8 @@ const inventoryController = {
             //     .exec();
 
             const ingredients = await Ingredients.find({}).exec();
+            console.log('ingredients...')
+            console.log(ingredients);
         
             for(let i = 0; i < manualCountInput.length; i++) {
                 const purchasedIngredient = await PurchasedIngredients.find({_id: purchasedIngredientsId[i]})
@@ -121,14 +125,50 @@ const inventoryController = {
 
                     details.push(result);
 
-                    for(let j = 0; j < details.length; j++) {
-                        if(result[0].ingredient == details[j][0].ingredient) {
-                            console.log('1- ' + details[j][0].ingredient);
-                            console.log('2- ' + result[0].ingredient);
+                    // for(let j = 0; j < details.length; j++) {
+                    //     if(result[0].ingredient == details[j][0].ingredient) {
+                    //         console.log('1- ' + details[j][0].ingredient);
+                    //         console.log('2- ' + result[0].ingredient);
+                    //     }
+                    //     else {
+                    //         console.log('unsame');
+                    //     }
+                    // }
+
+                    // for(let j = 0; j < ingredients.length; j++) {
+                    //     // console.log('1- ' + ingredients[j]._id);
+                    //     // console.log('2- ' + result[0].ingredient._id);
+                    //     if(result[0].ingredient.ingredientName == ingredients[j].ingredientName) {
+                    //         console.log('2- ' + result[0].ingredient.ingredientName);
+                            
+                    //         console.log('same');
+
+                    //         ingredientsDetails.push(ingredients[j]);
+
+                    //         console.log(ingredients[j]);
+                    //     }
+                    //     else {
+                    //     }
+                    // }
+
+                    isFound = 0;
+
+                    for(let j = 0; j < ingredientsDetails.length; j++) {
+                        // console.log('1- ' + ingredients[j]._id);
+                        // console.log('2- ' + result[0].ingredient._id);
+                        if(result[0].ingredient.ingredientName == ingredientsDetails[j].ingredientName) {
+                            console.log('2- ' + result[0].ingredient.ingredientName);
+                            
+                            console.log('same');
+
+                            isFound = 1;
                         }
-                        else {
-                            console.log('unsame');
-                        }
+                    }
+
+                    if(isFound == 0) {
+                        ingredientsDetails.push(result[0].ingredient);
+
+                        console.log(result[0].ingredient);
                     }
                 })
 
@@ -151,9 +191,13 @@ const inventoryController = {
                 // details.push(purchasedIngredient);
             }
 
+            console.log('details...');
             console.log(details);
 
-            res.render('inventoryDiscrepancyReason', {purchasedIngredients: details});
+            console.log('ingredientsDetails...');
+            console.log(ingredientsDetails)
+
+            res.render('inventoryDiscrepancyReason', {ingredients: ingredientsDetails});
 
         } catch (err) {
             console.log(err);

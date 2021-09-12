@@ -49,12 +49,12 @@
         
                         <!-- Contents of table -->
                         <tbody>
-                            {{#each purchasedIngredients}}
-                                {{#each this}}
+                            {{#each ingredients}}
+                                {{!-- {{#each this}} --}}
                               <tr>
-                                <td class="text-start">{{purchasedIngredient.ingredient.ingredientName}}</td>
-                                <td class="text-center">{{../ingredient.totalQuantity}}</td>
-                                <td class="text-center">{{quantityPerStock}}</td>
+                                <td class="text-start">{{ingredientName}}</td>
+                                <td class="text-center">{{totalQuantity}}</td>
+                                <td class="text-center">{{uom.abbrev}}</td>
                                 <td class="text-center">{{purchasedIngredientName}}</td>
                                 <td class="text-center">loss</td>
                                 <td>
@@ -68,7 +68,7 @@
                                       </select>
                                 </td>
                               </tr>
-                                {{/each}}
+                                {{!-- {{/each}} --}}
                             {{/each}}
                         
               
