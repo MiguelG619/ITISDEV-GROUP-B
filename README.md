@@ -7,4 +7,5 @@ A transaction processing system that would assist a client in with their problem
 * Async and Await JavaScript
 * MongoDB
 * Frontend JavaScript
+* Node JS as backend framework
  
